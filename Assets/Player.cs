@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     int id;
     int id_case;
     int money;
-    //List<int> properties { get; }
+    List<Properties> properties { get; }
     //List<int> cards { get; }
     bool isInPrison { get; }
 
@@ -71,37 +71,62 @@ public class Player : MonoBehaviour
     }
 
     //TO ADD AND REMOVE PROPERTY TO PLAYER
-    public void AddProperty(int prop)
+    public void AddProperty(Properties prop)
     {
-        throw new NotImplementedException();
-        //properties.Add(prop);
+        DebitPlayer(prop.Price);
+        properties.Add(prop);
     }
-    public void SellProperty(int prop)
+    public void SellProperty(Properties prop)
     {
-        throw new NotImplementedException();
-        //properties.Remove(prop);
+        CreditPlayer(prop.Price);
+        properties.Remove(prop);
     }
-
     //MORTGAGE PROPERTY
+    public void MortgageProperty(Properties prop)
+    {
+        CreditPlayer(prop.Price / 2);
+        prop.IsMortgage = true;
+    }
     //DISENCUMBER PROPERTY
+    public void DisencumberProperty(Properties prop)
+    {
+        DebitPlayer(prop.Price / 2);
+        prop.IsMortgage = false;
+    }
+    //ToCheckIsGroupIsFull
+    public bool isGroupFull(Properties prop)
+    {
+        throw new NotImplementedException();
+    }
 
     //HANDLER
-    public bool isBuildable(int prop)
+    public bool isBuildable(Properties prop)
     {
-        throw new NotImplementedException();
+        if (isGroupFull(prop))
+        {
+            if (hasHouse(prop) < 5)
+                return true;
+            else return false;
+        }
+        else
+            return false;
     }
-    public int hasHouse(int prop)
+    public int hasHouse(Properties prop)
     {
-        throw new NotImplementedException();
+        return prop.UpgradeTier;
     }
     //BUY HOUSE
-    public void AddHouse(int prop, int num)
+    public void AddHouse(Properties prop, int num)
     {
-        throw new NotImplementedException();
+        for( int i = 0; i< num; i++)
+            prop.addHouse();
+        DebitPlayer(prop.GetHousePrice * num);
     }
     //SELL HOUSE
-    public void RemoveHouse(int prop, int num)
+    public void RemoveHouse(Properties prop, int num)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < num; i++)
+            prop.removeHouse();
+        CreditPlayer(prop.GetHousePrice * num / 2);
     }
 }
