@@ -5,41 +5,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    int id;
+    //int id;
     int id_case;
     int money;
-    List<Properties> properties { get; }
+    List<Properties> properties { set; get; }
     //List<int> cards { get; }
-    bool isInPrison { get; }
+    int isInPrison;
 
-    public int Id
-    {
-        get { return id; }
-    }
+    //public int Id
+    //{
+    //    set { id = value; }
+    //    get { return id; }
+    //}
 
     public int Id_case
     {
+        set { id_case = value; }
         get { return id_case; }
+    }
+
+    public int IsInPrison {
+        get { return isInPrison; }
+        set { isInPrison = value; }
     }
 
     public int Money
     {
         get { return money; }
-    }
-
-    //MOVE PLAYER
-    public void move(int value)
-    {
-        throw new NotImplementedException();
-        id_case = Id_case + value;
-        if (Id_case > 39) //MAX CASE NUMBER //TODO
-        {
-            CreditPlayer(20000); //TODO
-            id_case = Id_case % 39; //TODO
-        }
-
-        //CALL EVENT
-        //TODO
     }
 
     //TO CREDIT OR DEBIT THIS PLAYER
@@ -128,5 +120,21 @@ public class Player : MonoBehaviour
         for (int i = 0; i < num; i++)
             prop.removeHouse();
         CreditPlayer(prop.GetHousePrice * num / 2);
+    }
+
+    public void SetPrisonner()
+    {
+        IsInPrison = 3;
+        id_case = 10;
+    }
+
+
+
+    void Awake()
+    {
+        id_case = 0;
+        money = 15000;
+        properties = new List<Properties>();
+        isInPrison = 0;
     }
 }

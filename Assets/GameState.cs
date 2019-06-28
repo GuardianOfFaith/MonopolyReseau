@@ -28,6 +28,14 @@ public class GameState : MonoBehaviour
         if (active_Player >= playerList.Count)
             active_Player = 0;
     }
+    public Player getActivePlayer()
+    {
+        return playerList[active_Player];
+    }
+    public void setPlayerList(List<Player> list)
+    {
+        playerList = list;
+    }
 
     //Remove a defeated player
     public void RemovePlayer()
@@ -42,5 +50,10 @@ public class GameState : MonoBehaviour
         dice_1 = Random.Range(1, 7);
         dice_1 = Random.Range(1, 7);
         return dice_1 == dice_2;
+    }
+    //to get the value of the roll
+    public int getDiceRoll()
+    {
+        return dice_1 + dice_2;
     }
 }
