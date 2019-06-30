@@ -11,6 +11,7 @@ public class Propriete : MonoBehaviour
 
     public enum TypeCase
     {
+        Depart,
         Violet,
         BleuClair,
         Pourpre,
@@ -25,6 +26,7 @@ public class Propriete : MonoBehaviour
         Communauté,
         Parc,
         Prison,
+        Allez_en_Prison,
         Taxe
     };
 
@@ -33,7 +35,7 @@ public class Propriete : MonoBehaviour
     
     void Start()
     {
-        
+        name = gameObject.name;
     }
 
     // Update is called once per frame
