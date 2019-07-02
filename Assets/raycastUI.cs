@@ -42,6 +42,11 @@ public class raycastUI : MonoBehaviour
                 {
                     Propriete Presult = result.gameObject.GetComponent<Propriete>();
                     Debug.Log(Presult.name+" => "+Presult.id+" cost "+Presult.Thunes+" for type "+Presult.Type);
+                    if (Presult.RueMaison)
+                    {
+                        Presult.CreerMaison(); 
+                    }
+                    
                 }
             }
         }

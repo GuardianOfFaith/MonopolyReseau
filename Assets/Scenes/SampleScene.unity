@@ -673,7 +673,13 @@ MonoBehaviour:
   name: Impots
   id: 4
   Thunes: 20000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 16
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &47399502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,7 +1470,13 @@ MonoBehaviour:
   name: Parc
   id: 20
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 13
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!114 &183089451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1804,7 +1816,13 @@ MonoBehaviour:
   name: 
   id: 25
   Thunes: 20000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 9
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &212307587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1916,13 @@ MonoBehaviour:
   name: rue vaugirard
   id: 6
   Thunes: 10000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 2
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &226010617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,7 +2558,13 @@ MonoBehaviour:
   name: 
   id: 19
   Thunes: 20000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 4
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &298675197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,7 +3418,13 @@ MonoBehaviour:
   name: Gare montparnase
   id: 5
   Thunes: 20000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 9
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &376269169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4996,7 +5032,13 @@ MonoBehaviour:
   name: 
   id: 39
   Thunes: 40000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 8
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &457711555
 GameObject:
   m_ObjectHideFlags: 0
@@ -5804,7 +5846,13 @@ MonoBehaviour:
   name: 
   id: 35
   Thunes: 20000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 9
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &506434470
 GameObject:
   m_ObjectHideFlags: 0
@@ -5972,7 +6020,13 @@ MonoBehaviour:
   name: 
   id: 12
   Thunes: 15000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 10
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &522887096
 GameObject:
   m_ObjectHideFlags: 0
@@ -6300,7 +6354,13 @@ MonoBehaviour:
   name: 
   id: 7
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 11
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -6476,7 +6536,13 @@ MonoBehaviour:
   name: 
   id: 34
   Thunes: 32000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 7
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &564482139
 GameObject:
   m_ObjectHideFlags: 0
@@ -6570,7 +6636,13 @@ MonoBehaviour:
   name: 
   id: 13
   Thunes: 14000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 3
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &578536634
 GameObject:
   m_ObjectHideFlags: 0
@@ -6664,7 +6736,13 @@ MonoBehaviour:
   name: 
   id: 22
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 11
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &580240986
 GameObject:
   m_ObjectHideFlags: 0
@@ -6758,7 +6836,13 @@ MonoBehaviour:
   name: 
   id: 16
   Thunes: 18000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 4
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &585746117
 GameObject:
   m_ObjectHideFlags: 0
@@ -6852,7 +6936,13 @@ MonoBehaviour:
   name: 
   id: 31
   Thunes: 30000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 7
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &593572875
 GameObject:
   m_ObjectHideFlags: 0
@@ -6946,7 +7036,13 @@ MonoBehaviour:
   name: rue de boudeville
   id: 1
   Thunes: 6000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 1
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &627751158
 GameObject:
   m_ObjectHideFlags: 0
@@ -7040,7 +7136,13 @@ MonoBehaviour:
   name: 
   id: 37
   Thunes: 35000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 8
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &641062386
 GameObject:
   m_ObjectHideFlags: 0
@@ -7337,7 +7439,13 @@ MonoBehaviour:
   name: Allez en prison
   id: 30
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 15
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &657413850
 GameObject:
   m_ObjectHideFlags: 0
@@ -7887,7 +7995,13 @@ MonoBehaviour:
   name: 
   id: 29
   Thunes: 28000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 6
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &690783501
 GameObject:
   m_ObjectHideFlags: 0
@@ -8761,7 +8875,13 @@ MonoBehaviour:
   name: 
   id: 38
   Thunes: 10000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 16
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &747091645
 GameObject:
   m_ObjectHideFlags: 0
@@ -9059,7 +9179,13 @@ MonoBehaviour:
   name: "Caisse communaut\xE9"
   id: 2
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 12
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &771837958
 GameObject:
   m_ObjectHideFlags: 0
@@ -10249,7 +10375,13 @@ MonoBehaviour:
   name: 
   id: 8
   Thunes: 10000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 2
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &917035481
 GameObject:
   m_ObjectHideFlags: 0
@@ -10823,7 +10955,13 @@ MonoBehaviour:
   name: 
   id: 9
   Thunes: 12000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 2
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &996582592
 GameObject:
   m_ObjectHideFlags: 0
@@ -11619,7 +11757,13 @@ MonoBehaviour:
   name: rue lecourbe
   id: 3
   Thunes: 6000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 1
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1169388300
 GameObject:
   m_ObjectHideFlags: 0
@@ -12925,7 +13069,13 @@ MonoBehaviour:
   name: 
   id: 33
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 12
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1359814060
 GameObject:
   m_ObjectHideFlags: 0
@@ -13179,7 +13329,13 @@ MonoBehaviour:
   name: Start
   id: 0
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 0
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!114 &1370980033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14073,7 +14229,13 @@ MonoBehaviour:
   name: 
   id: 17
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 12
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1516691988
 GameObject:
   m_ObjectHideFlags: 0
@@ -14331,7 +14493,13 @@ MonoBehaviour:
   name: Prison
   id: 10
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 14
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!114 &1540274768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14597,7 +14765,13 @@ MonoBehaviour:
   name: 
   id: 36
   Thunes: 0
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 11
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1563139064
 GameObject:
   m_ObjectHideFlags: 0
@@ -16237,7 +16411,13 @@ MonoBehaviour:
   name: 
   id: 15
   Thunes: 20000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 9
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1670939242
 GameObject:
   m_ObjectHideFlags: 0
@@ -16331,7 +16511,13 @@ MonoBehaviour:
   name: 
   id: 28
   Thunes: 15000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 10
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1679874585
 GameObject:
   m_ObjectHideFlags: 0
@@ -16425,7 +16611,13 @@ MonoBehaviour:
   name: 
   id: 24
   Thunes: 24000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 5
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1680505049
 GameObject:
   m_ObjectHideFlags: 0
@@ -16753,7 +16945,13 @@ MonoBehaviour:
   name: 
   id: 21
   Thunes: 22000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 5
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1722952116
 GameObject:
   m_ObjectHideFlags: 0
@@ -17709,7 +17907,13 @@ MonoBehaviour:
   name: 
   id: 18
   Thunes: 18000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 4
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1855910250
 GameObject:
   m_ObjectHideFlags: 0
@@ -18543,7 +18747,13 @@ MonoBehaviour:
   name: 
   id: 14
   Thunes: 16000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 3
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1940457539
 GameObject:
   m_ObjectHideFlags: 0
@@ -18711,7 +18921,13 @@ MonoBehaviour:
   name: 
   id: 11
   Thunes: 14000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 3
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1951512400
 GameObject:
   m_ObjectHideFlags: 0
@@ -18805,7 +19021,13 @@ MonoBehaviour:
   name: 
   id: 23
   Thunes: 22000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 5
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &1953071331
 GameObject:
   m_ObjectHideFlags: 0
@@ -19517,7 +19739,13 @@ MonoBehaviour:
   name: 
   id: 26
   Thunes: 26000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 6
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &2049406290
 GameObject:
   m_ObjectHideFlags: 0
@@ -20313,7 +20541,13 @@ MonoBehaviour:
   name: 
   id: 27
   Thunes: 26000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 6
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &2130221592
 GameObject:
   m_ObjectHideFlags: 0
@@ -20641,7 +20875,13 @@ MonoBehaviour:
   name: 
   id: 32
   Thunes: 30000
+  Maison: 0
+  ZoneMaison: {fileID: 0}
+  RueMaison: 0
   Type: 7
+  CouleurZone: {fileID: 0}
+  PrefabMaison: {fileID: 0}
+  PrefabHotel: {fileID: 0}
 --- !u!1 &2144034202
 GameObject:
   m_ObjectHideFlags: 0
