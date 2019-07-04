@@ -11,7 +11,17 @@ public class Player : MonoBehaviour
     List<Properties> properties { set; get; }
     //List<int> cards { get; }
     int isInPrison;
-
+    public playerPref PlayerPref;
+    
+    void Start()
+    {
+        GameObject g = Instantiate(Resources.Load<GameObject>(name));
+        PlayerPref = g.GetComponent<playerPref>();
+        g.name = name;
+        PlayerPref.start();
+    }
+    
+    
     //public int Id
     //{
     //    set { id = value; }

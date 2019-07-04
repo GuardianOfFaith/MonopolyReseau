@@ -5,7 +5,7 @@ using UnityEngine;
 public class Propriete : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string name;
+    public string Name;
     public int id;
     public int Thunes;
     public int Maison = 0;
@@ -37,6 +37,7 @@ public class Propriete : MonoBehaviour
     public GameObject PrefabMaison;
     public GameObject PrefabHotel;
     private List<GameObject> MaisonInst = new List<GameObject>();
+    
     public void CreerMaison()
     {
         
@@ -62,7 +63,7 @@ public class Propriete : MonoBehaviour
     
     void Start()
     {
-        name = gameObject.name;
+        Name = name;
         PrefabMaison = Resources.Load<GameObject>("Maison");
         PrefabHotel = Resources.Load<GameObject>("Hotel");
         

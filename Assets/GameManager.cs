@@ -7,11 +7,17 @@ public class GameManager : MonoBehaviour
 {
 
     GameState gs;
-
+    
+    public GameObject player;
+    public int seed;
+    
     // Start is called before the first frame update
     void Start()
     {
         gs = new GameState();
+        player = Resources.Load<GameObject>("Player");
+        instantiatePlayer(4);
+        
     }
 
     // Update is called once per frame
@@ -24,11 +30,12 @@ public class GameManager : MonoBehaviour
     {
         List<Player> list = new List<Player>();
         list.Clear();
-
+        
         //create GUI For player information display
         for(int i = 0; i < count; i++)
         {
-            list.Add(Instantiate(new Player()));
+            list.Add(Instantiate(player).GetComponent<Player>());
+            list[i].name = "p"+(i+1);
         }
         gs.setPlayerList(list);
     }
