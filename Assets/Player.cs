@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         GameObject g = Instantiate(Resources.Load<GameObject>(name));
         PlayerPref = g.GetComponent<playerPref>();
         g.name = name;
-        Board.instance.Players.Add(PlayerPref);
+        GameManager.instance.gs.Players.Add(PlayerPref);
         PlayerPref.start();
     }
     

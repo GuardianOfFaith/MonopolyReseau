@@ -7,9 +7,11 @@ public class playerPref : MonoBehaviour
 {
     public int IDCase = 0;
     public Propriete Case;
+    public GameState gs;
     public void start()
     {
-        Case = Board.instance.getProprieter(IDCase);
+        gs = GameManager.instance.gs;
+        Case = gs.getProprieter(IDCase);
         transform.SetParent(Case.transform);
         transform.localScale = new Vector3(10,50,10);
         switch (name)
@@ -32,7 +34,7 @@ public class playerPref : MonoBehaviour
     public int move(int movement)
     {
         IDCase = (IDCase + movement) % 40;
-        Case = Board.instance.getProprieter(IDCase);
+        Case = gs.getProprieter(IDCase);
         if (Case.Type == Propriete.TypeCase.Prison)
         {
             transform.SetParent(Case.transform.GetChild(0));
@@ -134,7 +136,7 @@ public class playerPref : MonoBehaviour
     public void AllerEnPrison()
     {
         IDCase = 10;
-        Case = Board.instance.getProprieter(IDCase);
+        Case = gs.getProprieter(IDCase);
         transform.SetParent(Case.transform.GetChild(2));
         switch (name)
         {

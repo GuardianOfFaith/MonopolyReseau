@@ -1,23 +1,28 @@
 ﻿using System.Collections;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
-
-    GameState gs;
+    public GameState gs;
     public static GameManager instance;
     public GameObject player;
     public int seed;
-   
+    public TextMeshProUGUI debugText;
+    public Carte carte;
     
+    public Transform Plateau;
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         seed=(int)PhotonNetwork.room.CustomProperties["seed"];
-        gs = new GameState();
+        Random.InitState(seed);
+        gs =  gameObject.GetComponent<GameState>();
+        gs.Creer();
         player = Resources.Load<GameObject>("Player");
         instantiatePlayer(4);
         

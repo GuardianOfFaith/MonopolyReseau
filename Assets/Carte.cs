@@ -11,10 +11,8 @@ public class Carte : MonoBehaviour
     public TextMeshProUGUI Title;
     public TextMeshProUGUI Text;
     
-    
-    void Start()
+    public void Creer()
     {
-        Random.InitState(GameManager.instance.seed);
         for (int i = 0; i < 16; i++)
         {
             CartesChance.Add(new EffetCarte(EffetCarte.CarteType.Chance));
@@ -107,8 +105,8 @@ public class EffetCarte
                     effet = Effet.Bouger;
                     Title = "Deplacement forcer";
                     int id = Random.Range(0, 40);
-                    Board b = Board.instance;
-                    Text = "Vous partez pour " + b.Case[id].Name;
+                    
+                    Text = "Vous partez pour " + GameManager.instance.gs.Case[id].name;
                     amount = id;
                     break;
                 case 1:
