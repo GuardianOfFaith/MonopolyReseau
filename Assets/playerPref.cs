@@ -80,6 +80,57 @@ public class playerPref : MonoBehaviour
         return IDCase;
     }
 
+    public int move(Propriete _case)
+    {
+        IDCase = _case.id;
+        Case = _case;
+        if (Case.Type == Propriete.TypeCase.Prison)
+        {
+            transform.SetParent(Case.transform.GetChild(0));
+            switch (name)
+            {
+                
+                case "p1":
+                    transform.localPosition = new Vector3(-60, 0, 0);
+                    break;
+                case "p2":
+                    transform.localPosition = new Vector3(-30, 0 , 0);
+                    break;
+                case "p3":
+                    transform.localPosition = new Vector3(0, 0, 0);
+                    break;
+                case "p4":
+                    transform.localPosition = new Vector3(30, 0, 0);
+                    break; 
+            }
+        }
+        else if (Case.Type == Propriete.TypeCase.Allez_en_Prison)
+        {
+            AllerEnPrison();
+        }
+        else
+        {
+            transform.SetParent(Case.transform);
+            switch (name)
+            {
+                case "p1":
+                    transform.localPosition = new Vector3(-20, 0, 0);
+                    break;
+                case "p2":
+                    transform.localPosition = new Vector3(-20, -30, 0);
+                    break;
+                case "p3":
+                    transform.localPosition = new Vector3(20, 0, 0);
+                    break;
+                case "p4":
+                    transform.localPosition = new Vector3(20, -30, 0);
+                    break; 
+            }
+        }
+        
+        return IDCase;
+    }
+    
     public void AllerEnPrison()
     {
         IDCase = 10;

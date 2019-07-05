@@ -14,6 +14,7 @@ public class Carte : MonoBehaviour
     
     void Start()
     {
+        Random.InitState(GameManager.instance.seed);
         for (int i = 0; i < 16; i++)
         {
             CartesChance.Add(new EffetCarte(EffetCarte.CarteType.Chance));

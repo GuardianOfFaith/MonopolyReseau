@@ -7,13 +7,16 @@ public class GameManager : MonoBehaviour
 {
 
     GameState gs;
-    
+    public static GameManager instance;
     public GameObject player;
     public int seed;
+   
     
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+        seed=(int)PhotonNetwork.room.CustomProperties["seed"];
         gs = new GameState();
         player = Resources.Load<GameObject>("Player");
         instantiatePlayer(4);
