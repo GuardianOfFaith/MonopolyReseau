@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -131,10 +131,6 @@ public class GameState : MonoBehaviour
             diceroll[maxInd] = 0;
         }
         Players = li;
-        foreach (Player p in Players)
-        {
-            gm.debugText.text += p.name;
-        }
     }
 
     //Remove a defeated player

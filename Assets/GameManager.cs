@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int seed;
     public TextMeshProUGUI debugText;
     public Carte carte;
+    public GameObject[] playersInfo; 
     
     public Transform Plateau;
     // Start is called before the first frame update
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
             list[i].name = "p"+(i+1);
         }
         gs.setPlayerList(list);
+        InitGui();
     }
 
     public void ThrowDice(int double_count)
@@ -76,5 +79,36 @@ public class GameManager : MonoBehaviour
         if (gs.getActivePlayer().IsInPrison > 0)
             gs.getActivePlayer().IsInPrison--;
         gs.ChangePlayer();
+        OnGui();
+    }
+
+    public void InitGui()
+    {
+        int i = 0;
+
+
+        foreach (GameObject go in playersInfo)
+        {
+            if (i < PhotonNetwork.playerList.Length)
+            {
+                go.transform.Find("UserName").GetComponent<TextMeshProUGUI>().text = PhotonNetwork.playerList[i].NickName;
+            }
+            else
+            {
+                go.transform.Find("UserName").GetComponent<TextMeshProUGUI>().text = "IA";
+            }
+            go.transform.Find("Icone").GetComponent<Image>().sprite = Resources.Load<Sprite>("SpriteP" + (i + 1));
+            go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
+            i++;
+        }
+    }
+    void OnGui()
+    {
+        int i = 0;
+        foreach(GameObject go in playersInfo)
+        {
+            go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
+            i++;
+        }
     }
 }
