@@ -41,10 +41,38 @@ public class raycastUI : MonoBehaviour
                 if (result.gameObject.name != "Ignore" && result.gameObject.GetComponent<Propriete>())
                 {
                     Propriete Presult = result.gameObject.GetComponent<Propriete>();
-                    Debug.Log(Presult.name+" => "+Presult.id+" cost "+Presult.Thunes+" for type "+Presult.Type);
                     if (Presult.RueMaison)
                     {
                         Presult.CreerMaison(); 
+                    }
+                    
+                }
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            //Set up the new Pointer Event
+            m_PointerEventData = new PointerEventData(m_EventSystem);
+            //Set the Pointer Event Position to that of the mouse position
+            m_PointerEventData.position = Input.mousePosition;
+
+            //Create a list of Raycast Results
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            //Raycast using the Graphics Raycaster and mouse click position
+            m_Raycaster.Raycast(m_PointerEventData, results);
+
+            //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+            foreach (RaycastResult result in results)
+            {
+                
+                if (result.gameObject.name != "Ignore" && result.gameObject.GetComponent<Propriete>())
+                {
+                    Propriete Presult = result.gameObject.GetComponent<Propriete>();
+                    if (Presult.RueMaison)
+                    {
+                        Presult.RetirerMaison(); 
                     }
                     
                 }

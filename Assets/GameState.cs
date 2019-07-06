@@ -49,7 +49,7 @@ public class GameState : MonoBehaviour
             int[] Temp = new int[40];
             for (int i = 0; i < 40; i++)
             {
-                Temp[i]=Case[i].Maison;
+                Temp[i]=Case[i].Tier;
             }
             
             stream.SendNext(temp);
@@ -69,12 +69,21 @@ public class GameState : MonoBehaviour
 
             for (int i = 0; i < Temp.Length; i++)
             {
-                if (Temp[i] > Case[i].Maison)
+                if (Temp[i] > Case[i].Tier)
                 {
-                    int k = Temp[i] - Case[i].Maison;
+                    int k = Temp[i] - Case[i].Tier;
                     for (int j = 1; j <= k; j++)
                     {
                         Case[i].CreerMaison();
+                    }
+                }
+                
+                if (Temp[i] < Case[i].Tier)
+                {
+                    int k = Case[i].Tier - Temp[i] ;
+                    for (int j = 1; j <= k; j++)
+                    {
+                        Case[i].RetirerMaison();
                     }
                 }
             }
@@ -121,8 +130,8 @@ public class GameState : MonoBehaviour
             li.Add(list[maxInd]);
             diceroll[maxInd] = 0;
         }
-        playerList = li;
-        foreach (Player p in playerList)
+        Players = li;
+        foreach (Player p in Players)
         {
             gm.debugText.text += p.name;
         }

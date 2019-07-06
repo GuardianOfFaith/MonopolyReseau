@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Propriete : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public string Name;
+    public string name;
     public int id;
-    public int Thunes;
-    public int Maison = 0;
+    public int Prix;
+    public int Tier = 0;
     public Transform ZoneMaison;
     public bool RueMaison = false;
     public enum TypeCase
@@ -31,39 +30,86 @@ public class Propriete : MonoBehaviour
         Allez_en_Prison,
         Taxe
     };
-
     public TypeCase Type;
+    int housePrice;
+    bool isMortgage;
+    
+    //AFFICHAGE
     public Material CouleurZone ;
     public GameObject PrefabMaison;
     public GameObject PrefabHotel;
     private List<GameObject> MaisonInst = new List<GameObject>();
+    public int instantier=0;
+    public GameObject Hotel=null;
     
     public void CreerMaison()
     {
-        
-        if (Maison == 4)
+        if (Tier > 4)
+        {
+            return;
+        }
+        if (Tier == 4)
         {
             foreach (GameObject g in MaisonInst)
             {
                 g.SetActive(false);
             }
-            GameObject maison = Instantiate(PrefabHotel, ZoneMaison);
-            maison.GetComponent<Renderer>().material = CouleurZone;
-        }
-        else if(Maison <4)
-        {
-            GameObject maison = Instantiate(PrefabMaison, ZoneMaison);
-            maison.transform.localPosition += new Vector3(-30 + (20 * Maison), 0, 0);
-            maison.GetComponent<Renderer>().material = CouleurZone;
-            MaisonInst.Add(maison);
+
+            if (Hotel == null)
+            {
+                GameObject maison = Instantiate(PrefabHotel, ZoneMaison);
+                maison.GetComponent<Renderer>().material = CouleurZone;
+                Hotel = maison;
+            }
+            else
+            {
+                Hotel.SetActive(true);
+            }
             
         }
-        Maison++;
+        else if(Tier <4)
+        {
+            if (instantier==Tier)
+            {
+                GameObject maison = Instantiate(PrefabMaison, ZoneMaison);
+                maison.transform.localPosition += new Vector3(-30 + (20 * Tier), 0, 0);
+                maison.GetComponent<Renderer>().material = CouleurZone;
+                MaisonInst.Add(maison);
+                instantier++;
+            }
+            else
+            {
+                MaisonInst[Tier].SetActive(true);
+            }
+        }
+        Tier++;
+    }
+    
+    public void RetirerMaison()
+    {
+
+        if (Tier == 0)
+        {
+            return;
+        }
+        if (Tier > 4)
+        {
+            foreach (GameObject g in MaisonInst)
+            {
+                g.SetActive(true);
+            }
+            Hotel.SetActive(false);
+        }
+        else if(Tier <=4 && Tier >0)
+        {
+            MaisonInst[Tier-1].SetActive(false);      
+        }
+        Tier--;
     }
     
     void Start()
     {
-        Name = name;
+        name = gameObject.name;
         PrefabMaison = Resources.Load<GameObject>("Maison");
         PrefabHotel = Resources.Load<GameObject>("Hotel");
         
@@ -114,8 +160,79 @@ public class Propriete : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public string Name
     {
-        
+        get
+        {
+            return name;
+        }
+    }
+    public int Id
+    {
+        get { return id; }
+    }
+    public TypeCase type
+    {
+        get { return Type; }
+    }
+    public bool IsMortgage
+    {
+        get { return IsMortgage; }
+        set { isMortgage = value; }
+    }
+    //price to buy this property
+    public int prix
+    {
+        get { return Prix; }
+    }
+    //price went you end on this case
+    public int getPrice(bool groupFull)
+    {
+        if(type == TypeCase.Gare)
+        {
+            return Prix * (int)Mathf.Pow(2, Tier);
+        }
+        if(type == TypeCase.Public)
+        {
+            return Prix * Tier /** ActivePlayer.diceRoll*/;
+        }
+        switch (Tier)
+        {
+            case 0:
+                if (groupFull)
+                {
+                    return Prix * 2;
+                }
+                else return Prix;
+            case 1:
+                return Prix * 5;
+            case 2:
+                return Prix * 15;
+            case 3:
+                return Prix * 45;
+            case 4:
+                return Prix * 60;
+            case 5:
+                return Prix * 70;
+        }
+        return Prix;
+    }
+
+    public int UpgradeTier
+    {
+        get { return Tier; }
+    }
+    public void addHouse()
+    {
+        CreerMaison();
+    }
+    public void removeHouse()
+    {
+        Tier--;
+    }
+
+    public int GetHousePrice
+    {
+        get { return housePrice; }
     }
 }

@@ -154,6 +154,7 @@ public class Player : MonoBehaviour
     {
         IsInPrison = 3;
         IDCase = 10;
+        AllerEnPrison();
     }
 
 
