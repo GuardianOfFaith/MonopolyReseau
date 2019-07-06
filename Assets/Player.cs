@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public int IDCase = 0;
     public Propriete Case;
     public GameState gs;
-    List<Properties> properties { set; get; }
+    List<Propriete> properties { set; get; }
     //List<int> cards { get; }
     int isInPrison;
     
@@ -91,36 +91,36 @@ public class Player : MonoBehaviour
     }
 
     //TO ADD AND REMOVE PROPERTY TO PLAYER
-    public void AddProperty(Properties prop)
+    public void AddProperty(Propriete prop)
     {
-        DebitPlayer(prop.Price);
+        DebitPlayer(prop.Prix);
         properties.Add(prop);
     }
-    public void SellProperty(Properties prop)
+    public void SellProperty(Propriete prop)
     {
-        CreditPlayer(prop.Price);
+        CreditPlayer(prop.Prix);
         properties.Remove(prop);
     }
     //MORTGAGE PROPERTY
-    public void MortgageProperty(Properties prop)
+    public void MortgageProperty(Propriete prop)
     {
-        CreditPlayer(prop.Price / 2);
+        CreditPlayer(prop.Prix / 2);
         prop.IsMortgage = true;
     }
     //DISENCUMBER PROPERTY
-    public void DisencumberProperty(Properties prop)
+    public void DisencumberProperty(Propriete prop)
     {
-        DebitPlayer(prop.Price / 2);
+        DebitPlayer(prop.Prix / 2);
         prop.IsMortgage = false;
     }
     //ToCheckIsGroupIsFull
-    public bool isGroupFull(Properties prop)
+    public bool isGroupFull(Propriete prop)
     {
         throw new NotImplementedException();
     }
 
     //HANDLER
-    public bool isBuildable(Properties prop)
+    public bool isBuildable(Propriete prop)
     {
         if (isGroupFull(prop))
         {
@@ -131,19 +131,19 @@ public class Player : MonoBehaviour
         else
             return false;
     }
-    public int hasHouse(Properties prop)
+    public int hasHouse(Propriete prop)
     {
         return prop.UpgradeTier;
     }
     //BUY HOUSE
-    public void AddHouse(Properties prop, int num)
+    public void AddHouse(Propriete prop, int num)
     {
         for( int i = 0; i< num; i++)
             prop.addHouse();
         DebitPlayer(prop.GetHousePrice * num);
     }
     //SELL HOUSE
-    public void RemoveHouse(Properties prop, int num)
+    public void RemoveHouse(Propriete prop, int num)
     {
         for (int i = 0; i < num; i++)
             prop.removeHouse();
@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
     {
         IDCase = 0;
         money = 15000;
-        properties = new List<Properties>();
+        properties = new List<Propriete>();
         isInPrison = 0;
     }
     

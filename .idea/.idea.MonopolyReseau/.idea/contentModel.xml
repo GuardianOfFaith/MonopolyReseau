@@ -302,7 +302,6 @@
             <e p="WebSocket.cs" t="Include" />
           </e>
         </e>
-        <e p="Properties.cs" t="Include" />
         <e p="Propriete.cs" t="Include" />
         <e p="raycastUI.cs" t="Include" />
         <e p="RTS_Camera.cs" t="Include" />
