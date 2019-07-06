@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     public GameState gs;
     public static GameManager instance;
-    public GameObject player;
     public int seed;
     public TextMeshProUGUI debugText;
     public Carte carte;
@@ -23,7 +22,6 @@ public class GameManager : MonoBehaviour
         Random.InitState(seed);
         gs =  gameObject.GetComponent<GameState>();
         gs.Creer();
-        player = Resources.Load<GameObject>("Player");
         instantiatePlayer(4);
         
     }
@@ -42,7 +40,7 @@ public class GameManager : MonoBehaviour
         //create GUI For player information display
         for(int i = 0; i < count; i++)
         {
-            list.Add(Instantiate(player).GetComponent<Player>());
+            list.Add(Instantiate(Resources.Load<GameObject>("p"+(i+1))).GetComponent<Player>());
             list[i].name = "p"+(i+1);
         }
         gs.setPlayerList(list);

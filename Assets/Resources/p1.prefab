@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1741433260061001087}
   - component: {fileID: 564579406761171248}
   - component: {fileID: 7306778489791992572}
-  - component: {fileID: 8031942418715762970}
-  - component: {fileID: 6508794115873753373}
+  - component: {fileID: 5249565209421301341}
   m_Layer: 0
   m_Name: p1
   m_TagString: Untagged
@@ -79,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8031942418715762970
+--- !u!114 &5249565209421301341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,35 +87,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8031942418715762969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02170bc50623fd8469ea935b58600f91, type: 3}
+  m_Script: {fileID: 11500000, guid: 1228910f9ea02d44bb46623eb4f7ae6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IDCase: 0
   Case: {fileID: 0}
---- !u!114 &6508794115873753373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8031942418715762969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 3
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 1741433260061001087}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
+  gs: {fileID: 0}
+  PlayerPref: {fileID: 0}

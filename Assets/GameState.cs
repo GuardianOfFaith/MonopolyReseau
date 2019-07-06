@@ -7,11 +7,10 @@ public class GameState : MonoBehaviour
 {
     int common_Case = 0;
     int active_Player;
-    List<Player> playerList;
     int dice_1, dice_2 = 1;
     public GameManager gm;
     public Propriete[] Case= new Propriete[40];
-    public List<playerPref> Players = new List<playerPref>();
+    public List<Player> Players = new List<Player>();
     
     
     public void Creer()
@@ -91,7 +90,7 @@ public class GameState : MonoBehaviour
     //Give money from the common case to the player
     public void ResetCommon()
     {
-        playerList[active_Player].CreditPlayer(common_Case);
+        Players[active_Player].CreditPlayer(common_Case);
         common_Case = 0;
     }
 
@@ -99,22 +98,22 @@ public class GameState : MonoBehaviour
     public void ChangePlayer()
     {
         active_Player++;
-        if (active_Player >= playerList.Count)
+        if (active_Player >= Players.Count)
             active_Player = 0;
     }
     public Player getActivePlayer()
     {
-        return playerList[active_Player];
+        return Players[active_Player];
     }
     public void setPlayerList(List<Player> list)
     {
-        playerList = list;
+        Players = list;
     }
 
     //Remove a defeated player
     public void RemovePlayer()
     {
-        playerList.RemoveAt(active_Player);
+        Players.RemoveAt(active_Player);
         active_Player--;
         ChangePlayer();
     }
