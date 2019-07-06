@@ -98,15 +98,27 @@ public class GameManager : MonoBehaviour
                 go.transform.Find("UserName").GetComponent<TextMeshProUGUI>().text = "IA";
             }
             go.transform.Find("Icone").GetComponent<Image>().sprite = Resources.Load<Sprite>("SpriteP" + (i + 1));
-            go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
             i++;
         }
+        OnGui();
     }
     void OnGui()
     {
         int i = 0;
         foreach(GameObject go in playersInfo)
         {
+            if (i == 3)
+            {
+                gs.Players[i].IsInPrison = 2;
+            }
+            if (gs.Players[i].IsInPrison > 0)
+            {
+                go.transform.Find("Prison").GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+            }
+            else
+            {
+                go.transform.Find("Prison").GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+            }
             go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
             i++;
         }
