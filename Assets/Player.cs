@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
-    //int id;
     int money;
     public int IDCase = 0;
     public Propriete Case;
@@ -14,6 +13,7 @@ public class Player : MonoBehaviour
     List<Propriete> properties { set; get; }
     //List<int> cards { get; }
     int isInPrison;
+    public int id;
     
     void Start()
     {
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         gs.Players.Add(this);
         Case = gs.getProprieter(IDCase);
         transform.SetParent(Case.transform);
-        transform.localScale = new Vector3(10,50,10);
+        transform.localScale = new Vector3(10,20,10);
         switch (name)
         {
             case "p1":

@@ -16,17 +16,6 @@ public class GameState : MonoBehaviour
     {
         Case = gm.Plateau.GetComponentsInChildren<Propriete>();
         foreach (var propriete in Case.OrderBy(propriete => propriete.id));
-        int i = 0;
-        foreach (PhotonPlayer p in PhotonNetwork.playerList)
-        {
-   
-            if (p == PhotonNetwork.player)
-            {
-                gm.debugText.text = p.name + " / " + PhotonNetwork.player.ID; // PLAYER ID PERMETTRA DE METTRE UN NUMEROS AU JOUEUR
-            }
-
-            i++;
-        }
         gm.carte.Creer();
     }    
 
@@ -34,15 +23,18 @@ public class GameState : MonoBehaviour
     {
         return Case[i];
     }
+
+    public bool once = true;
     
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
             int[] temp = new int[4];
+            
             for (int i = 0; i < 4; i++)
             {
-                temp[i]=Players[i].IDCase;
+                temp[i]=Players[i].IDCase;               
             }
                 
             
@@ -51,22 +43,41 @@ public class GameState : MonoBehaviour
             {
                 Temp[i]=Case[i].Tier;
             }
-            
+                      
             stream.SendNext(temp);
             stream.SendNext(Temp);
+            
+            if (once)
+            {
+                string[] names = new string[4];
+                string[] sprite = new string[4];
+                string[] argent = new string[4];
+
+                for (int i = 0; i < 4; i++)
+                {
+                    names[i] = gm.gui[i].name;
+                    sprite[i] = gm.gui[i].sprite;
+                    argent[i] = gm.gui[i].argent;
+                }
+                stream.SendNext(names);
+                stream.SendNext(sprite);
+                stream.SendNext(argent);
+            }
         }
         else
         {
             int[] temp = (int[])stream.ReceiveNext();
             int[] Temp = (int[])stream.ReceiveNext();
-            Debug.Log(Temp[5]);
+            
+            string[] names = (string[])stream.ReceiveNext();
+            string[] sprite = (string[])stream.ReceiveNext();
+            string[] argent = (string[])stream.ReceiveNext();
             
             for (int i = 0; i < 4; i++)
-            {
-                
+            {   
                 Players[i].move(Case[temp[i]]);
             }
-
+     
             for (int i = 0; i < Temp.Length; i++)
             {
                 if (Temp[i] > Case[i].Tier)
@@ -86,6 +97,18 @@ public class GameState : MonoBehaviour
                         Case[i].RetirerMaison();
                     }
                 }
+            }
+
+            if (once)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    gm.gui[i].name=names[i];
+                    gm.gui[i].sprite=sprite[i];
+                    gm.gui[i].argent=argent[i];
+                }
+                gm.InitGui(gm.gui);
+                once = false;
             }
         }
     }
@@ -130,7 +153,16 @@ public class GameState : MonoBehaviour
             li.Add(list[maxInd]);
             diceroll[maxInd] = 0;
         }
+
+        int j = 0;
+        foreach (Player p in li)
+        {
+            p.id = j+1;
+            gm.debugText.text += " " + li[j].name + " " + (j+1); 
+            j++;
+        }
         Players = li;
+       
     }
 
     //Remove a defeated player
