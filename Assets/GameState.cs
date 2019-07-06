@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,11 +7,10 @@ public class GameState : MonoBehaviour
 {
     int common_Case = 0;
     int active_Player;
-    int dice_1, dice_2 = 1;
+    int dice_1, dice_2 = 2;
     public GameManager gm;
     public Propriete[] Case= new Propriete[40];
     public List<Player> Players = new List<Player>();
-    
     
     public void Creer()
     {
@@ -105,9 +104,28 @@ public class GameState : MonoBehaviour
     {
         return Players[active_Player];
     }
+
+    //randomize the order of the player
     public void setPlayerList(List<Player> list)
     {
-        Players = list;
+        int[] diceroll = new int[4];
+        for(int i = 0; i < 4; i++)
+        {
+            Roll();
+            diceroll[i] = getDiceRoll();
+        }
+        List<Player> li = new List<Player>();
+        for (int i = 0; i < 4; i++)
+        {
+            int maxInd = diceroll.ToList().IndexOf(diceroll.Max<int>());
+            li.Add(list[maxInd]);
+            diceroll[maxInd] = 0;
+        }
+        playerList = li;
+        foreach (Player p in playerList)
+        {
+            gm.debugText.text += p.name;
+        }
     }
 
     //Remove a defeated player

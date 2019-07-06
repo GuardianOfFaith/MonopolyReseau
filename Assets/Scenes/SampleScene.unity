@@ -1489,6 +1489,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5255f7276abf34f9156dadd25c2c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &184113716 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2056488, guid: 407bd5cbe8c43334bb1b25c0f3826974,
+    type: 3}
+  m_PrefabInstance: {fileID: 1309188393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &199757988
 GameObject:
   m_ObjectHideFlags: 0
@@ -12275,8 +12281,8 @@ Canvas:
   m_GameObject: {fileID: 1104889231}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 184113716}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -13456,6 +13462,10 @@ PrefabInstance:
     - target: {fileID: 2056488, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: far clip plane
       value: 2100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056488, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
+      propertyPath: field of view
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}

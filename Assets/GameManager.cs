@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
         gs =  gameObject.GetComponent<GameState>();
         gs.Creer();
         instantiatePlayer(4);
-        
     }
 
     // Update is called once per frame
@@ -36,9 +35,8 @@ public class GameManager : MonoBehaviour
     {
         List<Player> list = new List<Player>();
         list.Clear();
-        
         //create GUI For player information display
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             list.Add(Instantiate(Resources.Load<GameObject>("p"+(i+1))).GetComponent<Player>());
             list[i].name = "p"+(i+1);
