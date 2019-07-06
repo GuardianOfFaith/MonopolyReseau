@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -137,10 +137,6 @@ public class GameManager : MonoBehaviour
         int i = 0;
         foreach(GameObject go in playersInfo)
         {
-            if (i == 3)
-            {
-                gs.Players[i].IsInPrison = 2;
-            }
             if (gs.Players[i].IsInPrison > 0)
             {
                 go.transform.Find("Prison").GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
