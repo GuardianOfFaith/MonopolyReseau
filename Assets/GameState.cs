@@ -1,16 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameState : MonoBehaviour
 {
     int common_Case = 0;
-    int active_Player;
+    int active_Player=1;
     int dice_1, dice_2 = 2;
     public GameManager gm;
     public Propriete[] Case= new Propriete[40];
     public List<Player> Players = new List<Player>();
+    public Sprite[] dices = new Sprite[6];
+    public Image dice1;
+    public Image dice2;
+    
     
     public void Creer()
     {
@@ -30,9 +37,10 @@ public class GameState : MonoBehaviour
     {
         if (stream.isWriting)
         {
-            int[] temp = new int[4];
+            int[] temp = new int[gm.playerCount];
             
-            for (int i = 0; i < 4; i++)
+            
+            for (int i = 0; i < gm.playerCount; i++)
             {
                 temp[i]=Players[i].IDCase;               
             }
@@ -46,14 +54,16 @@ public class GameState : MonoBehaviour
                       
             stream.SendNext(temp);
             stream.SendNext(Temp);
+            gm.debugText.text = "" + active_Player;
+            stream.SendNext(active_Player);
             
             if (once)
             {
-                string[] names = new string[4];
-                string[] sprite = new string[4];
-                string[] argent = new string[4];
+                string[] names = new string[gm.playerCount];
+                string[] sprite = new string[gm.playerCount];
+                string[] argent = new string[gm.playerCount];
 
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < gm.playerCount; i++)
                 {
                     names[i] = gm.gui[i].name;
                     sprite[i] = gm.gui[i].sprite;
@@ -68,12 +78,17 @@ public class GameState : MonoBehaviour
         {
             int[] temp = (int[])stream.ReceiveNext();
             int[] Temp = (int[])stream.ReceiveNext();
-            
+            int player = (int)stream.ReceiveNext();
             string[] names = (string[])stream.ReceiveNext();
             string[] sprite = (string[])stream.ReceiveNext();
             string[] argent = (string[])stream.ReceiveNext();
+
+            active_Player = player;
+            gm.debugText.text = "" + active_Player;
             
-            for (int i = 0; i < 4; i++)
+            Debug.Log(Players.Count+" "+gm.playerCount+" "+temp.Length);
+            
+            for (int i = 0; i < gm.playerCount; i++)
             {   
                 Players[i].move(Case[temp[i]]);
             }
@@ -98,10 +113,10 @@ public class GameState : MonoBehaviour
                     }
                 }
             }
-
-            if (once)
+            
+           if (once)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < gm.playerCount; i++)
                 {
                     gm.gui[i].name=names[i];
                     gm.gui[i].sprite=sprite[i];
@@ -125,29 +140,36 @@ public class GameState : MonoBehaviour
         common_Case = 0;
     }
 
+    public void NextTurn()
+    {
+        if (getActivePlayer().IsInPrison > 0)
+            getActivePlayer().IsInPrison--;
+        GetComponent<PhotonView>().RPC("ChangePlayer",PhotonTargets.All, "jup", "and jup!");
+    }
     //Change the active player
-    public void ChangePlayer()
+    [PunRPC]
+    public void ChangePlayer(string a,string b)
     {
         active_Player++;
-        if (active_Player >= Players.Count)
-            active_Player = 0;
+        if (active_Player >= Players.Count+1)
+            active_Player = 1;
     }
     public Player getActivePlayer()
     {
-        return Players[active_Player];
+        return Players[active_Player-1];
     }
 
     //randomize the order of the player
     public void setPlayerList(List<Player> list)
     {
-        int[] diceroll = new int[4];
-        for(int i = 0; i < 4; i++)
+        int[] diceroll = new int[gm.playerCount];
+        for(int i = 0; i < gm.playerCount; i++)
         {
             Roll();
             diceroll[i] = getDiceRoll();
         }
         List<Player> li = new List<Player>();
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < gm.playerCount; i++)
         {
             int maxInd = diceroll.ToList().IndexOf(diceroll.Max<int>());
             li.Add(list[maxInd]);
@@ -158,7 +180,7 @@ public class GameState : MonoBehaviour
         foreach (Player p in li)
         {
             p.id = j+1;
-            gm.debugText.text += " " + li[j].name + " " + (j+1); 
+            //gm.debugText.text += " " + li[j].name + " " + (j+1); 
             j++;
         }
         Players = li;
@@ -170,13 +192,17 @@ public class GameState : MonoBehaviour
     {
         Players.RemoveAt(active_Player);
         active_Player--;
-        ChangePlayer();
+        ChangePlayer("","");
     }
 
     //Make a dice roll
     public bool Roll() {
+        
         dice_1 = Random.Range(1, 7);
-        dice_1 = Random.Range(1, 7);
+        dice_2 = Random.Range(1, 7);
+        dice1.sprite = dices[dice_1-1];
+        dice2.sprite = dices[dice_2-1];
+        
         return dice_1 == dice_2;
     }
     //to get the value of the roll

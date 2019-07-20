@@ -14,11 +14,11 @@ public class Player : MonoBehaviour
     //List<int> cards { get; }
     int isInPrison;
     public int id;
+    public int doubleRolls = 0;
     
     void Start()
     {
         gs = GameManager.instance.gs;
-        gs.Players.Add(this);
         Case = gs.getProprieter(IDCase);
         transform.SetParent(Case.transform);
         transform.localScale = new Vector3(10,20,10);
@@ -296,7 +296,29 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            move(Random.Range(1, 7));
+            gs.dice1.gameObject.SetActive(true);
+            gs.dice2.gameObject.SetActive(true);
+            if (id == gs.getActivePlayer().id)
+            {
+                if (gs.Roll())
+                {
+                    doubleRolls++;
+                    if (doubleRolls==3)
+                    {
+                        AllerEnPrison();
+                        doubleRolls = 0;
+                        return;
+                    }
+                
+                }
+                else
+                {
+                    doubleRolls = 0;
+                    move(gs.getDiceRoll());
+                }
+            }
+            
+            
             //AllerEnPrison();
         }
     }
