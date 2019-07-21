@@ -62,16 +62,18 @@ public class GameState : MonoBehaviour
                 string[] names = new string[gm.playerCount];
                 string[] sprite = new string[gm.playerCount];
                 string[] argent = new string[gm.playerCount];
-
+                string[] Nickname = new string[gm.playerCount];
                 for (int i = 0; i < gm.playerCount; i++)
                 {
                     names[i] = gm.gui[i].name;
                     sprite[i] = gm.gui[i].sprite;
                     argent[i] = gm.gui[i].argent;
+                    Nickname[i] = gm.gui[i].Nickname;
                 }
                 stream.SendNext(names);
                 stream.SendNext(sprite);
                 stream.SendNext(argent);
+                stream.SendNext(Nickname);
             }
         }
         else
@@ -82,7 +84,7 @@ public class GameState : MonoBehaviour
             string[] names = (string[])stream.ReceiveNext();
             string[] sprite = (string[])stream.ReceiveNext();
             string[] argent = (string[])stream.ReceiveNext();
-
+            string[] Nickname = (string[])stream.ReceiveNext();
             active_Player = player;
             gm.debugText.text = "" + active_Player;
             
@@ -121,6 +123,7 @@ public class GameState : MonoBehaviour
                     gm.gui[i].name=names[i];
                     gm.gui[i].sprite=sprite[i];
                     gm.gui[i].argent=argent[i];
+                    gm.gui[i].Nickname = Nickname[i];
                 }
                 gm.InitGui(gm.gui);
                 once = false;

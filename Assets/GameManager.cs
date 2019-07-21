@@ -13,11 +13,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public int seed;
     public TextMeshProUGUI debugText;
+    public TextMeshProUGUI debugText2;
     public Carte carte;
     public GameObject[] playersInfo;
     public int playerCount;
     public Transform Plateau;
     public GuiContainer[] gui;
+    public int playerID;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -103,15 +106,24 @@ public class GameManager : MonoBehaviour
             else
             {
                 string s1 = "";
+                string s4 = "";
                 if (i < PhotonNetwork.playerList.Length)
                 {
-                    s1 = PhotonNetwork.playerList[i].NickName + " "+gs.Players[i].name;
-                    go.transform.Find("UserName").GetComponent<TextMeshProUGUI>().text = PhotonNetwork.playerList[i].NickName + " "+gs.Players[i].name;
+                    s1 = PhotonNetwork.playerList[i].NickName+" "+gs.Players[i].name;
+                    s4 = PhotonNetwork.playerList[i].NickName;
+                    if (PhotonNetwork.isMasterClient && PhotonNetwork.playerList[i].NickName == PhotonNetwork.playerName)
+                    {   
+                        Debug.Log(PhotonNetwork.playerList[i].NickName +"  "+ PhotonNetwork.playerName);
+                        debugText2.text =""+ gs.Players[i].id;
+                        playerID = gs.Players[i].id;
+                    }
+                    go.transform.Find("UserName").GetComponent<TextMeshProUGUI>().text = PhotonNetwork.playerList[i].NickName+" "+gs.Players[i].name;;
                 
                 }
                 else
                 {
                     s1 = "IA";
+                    s4 = "IA";
                     go.transform.Find("UserName").GetComponent<TextMeshProUGUI>().text = "IA";
                 }
 
@@ -119,7 +131,7 @@ public class GameManager : MonoBehaviour
                 string s3 = gs.Players[i].Money.ToString();
                 go.transform.Find("Icone").GetComponent<Image>().sprite = Resources.Load<Sprite>("SpriteP" + (i + 1));
                 go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
-                gui[i]=new GuiContainer(s1,s2,s3);
+                gui[i]=new GuiContainer(s1,s2,s3,s4);
             }    
             i++;
         }
@@ -139,6 +151,12 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                if (g[i].Nickname== PhotonNetwork.playerName)
+                {   
+                    Debug.Log(PhotonNetwork.playerList[i].NickName +"  "+ PhotonNetwork.playerName);
+                    debugText2.text =""+ gs.Players[i].id;
+                    playerID = gs.Players[i].id;
+                }
                 string s1 = g[i].name;
                 string s2 = g[i].sprite;
                 string s3 = g[i].argent;
@@ -180,12 +198,13 @@ public class GuiContainer
     public string name;
     public string sprite;
     public string argent;
-
-    public GuiContainer(string _name, string _sprite, string _argent)
+    public string Nickname;
+    public GuiContainer(string _name, string _sprite, string _argent,string nickname)
     {
         name = _name;
         sprite = _sprite;
         argent = _argent;
+        Nickname = nickname;
     }
 
 }
