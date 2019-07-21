@@ -68,8 +68,10 @@ public class GameManager : MonoBehaviour
     public void move()
     {
         gs.Roll();
+        isRollingDice = false;
         if (gs.isDiceDouble())
         {
+            isRollingDice = true;
             gs.getActivePlayer().doubleRolls++;
             if (gs.getActivePlayer().doubleRolls == 3)
             {
@@ -85,6 +87,8 @@ public class GameManager : MonoBehaviour
 
                 if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0)
                     isBuying = true;
+                else paid(gs.getProprieter(gs.getActivePlayer().IDCase).getPrice(false), gs.getProprieter(gs.getActivePlayer().IDCase).Owner);
+
                 refreshGui();
                 
                 return;
@@ -101,9 +105,15 @@ public class GameManager : MonoBehaviour
         }
         if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0)
             isBuying = true;
+        else paid(gs.getProprieter(gs.getActivePlayer().IDCase).getPrice(false), gs.getProprieter(gs.getActivePlayer().IDCase).Owner);
         refreshGui();
     }
 
+    public void paid(int price, int player)
+    {
+        gs.Players[player].CreditPlayer(price);
+        gs.getActivePlayer().DebitPlayer(price);
+    }
     public void EndTurn()
     {
         if (gs.getActivePlayer().IsInPrison > 0)
