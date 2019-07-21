@@ -107,6 +107,11 @@ public class GameManager : MonoBehaviour
         OnGui();
     }
     
+    public void BuyingMod(bool val)
+    {
+        isBuying = val;
+        refreshGui();
+    }
     
     public void InitGui()
     {
@@ -227,10 +232,16 @@ public class GameManager : MonoBehaviour
                 guiButton[3].SetActive(true);
                 guiButton[3].GetComponent<TextMeshPro>().text = "Allez en prison !";
             }
-            //else if (isBuying)
-            //{
-
-            //}
+            else if (isBuying)
+            {
+                Propriete prop = gs.getProprieter(gs.getActivePlayer().IDCase);
+                if (prop.Type != Propriete.TypeCase.Allez_en_Prison && prop.Type != Propriete.TypeCase.Chance && prop.Type != Propriete.TypeCase.Communauté && prop.Type != Propriete.TypeCase.Depart && prop.Type != Propriete.TypeCase.Parc && prop.Type != Propriete.TypeCase.Prison && prop.Type != Propriete.TypeCase.Public && prop.Type != Propriete.TypeCase.Taxe && prop.p == null)
+                {
+                    guiButton[2].SetActive(true);
+                    guiButton[2].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                    guiButton[2].transform.GetChild(1).GetComponent<TextMeshPro>().text = prop.name + "\nPrix : " + prop.Prix + "\nGroupe : " + prop.Type.ToString();
+                }
+            }
             //else if (false)
             //{
 
