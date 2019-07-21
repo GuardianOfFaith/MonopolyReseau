@@ -21,12 +21,18 @@ public class GameManager : MonoBehaviour
     public GuiContainer[] gui;
     public int playerID;
     
+    public GameObject[] guiButton;
+
+    public bool isRollingDice = false;
+    public int countDouble = 0;
+    bool isBuying = false;
+
     // Start is called before the first frame update
     void Start()
     {
         debugText.text = "";
         instance = this;
-        seed=(int)PhotonNetwork.room.CustomProperties["seed"];
+        seed = (int)PhotonNetwork.room.CustomProperties["seed"];
         Debug.Log(PhotonNetwork.playerList.Length);
         playerCount = PhotonNetwork.playerList.Length;
         gui=new GuiContainer[playerCount];
@@ -53,34 +59,29 @@ public class GameManager : MonoBehaviour
             list[i].name = "p"+(i+1);
         }
         gs.setPlayerList(list);
+        isRollingDice = true;
         InitGui();
     }
 
-    public void ThrowDice(int double_count)
-    {
-        bool isDouble = gs.Roll();
-        if (isDouble && double_count == 2)
-            gs.getActivePlayer().SetPrisonner();
-        else
-            move(gs.getDiceRoll());
-
-        //play animation
-    }
-
     //MOVE PLAYER
-    public void move(int value)
+    public void move()
     {
-        throw new NotImplementedException();
-        int pos = gs.getActivePlayer().Id_case += value;
-
-        if (pos > 39) //MAX CASE NUMBER //TODO
+        gs.Roll();
+        if (gs.isDiceDouble())
         {
-            gs.getActivePlayer().CreditPlayer(2000); //TODO
-            pos = pos % 39; //TODO
+            gs.getActivePlayer().doubleRolls++;
+            if (gs.getActivePlayer().doubleRolls == 3)
+            {
+                gs.getActivePlayer().AllerEnPrison();
+                gs.getActivePlayer().doubleRolls = 0;
+                return;
+            }
         }
-        Debug.Log("position = " + pos);
-        //CALL EVENT
-        //TODO
+        else
+        {
+            gs.getActivePlayer().doubleRolls = 0;
+            gs.getActivePlayer().move(gs.getDiceRoll());
+        }
     }
 
     public void EndTurn()
@@ -170,6 +171,12 @@ public class GameManager : MonoBehaviour
         }
         OnGui();
     }
+
+    public void refreshGui()
+    {
+        OnGui();
+    }
+
     void OnGui()
     {
         int i = 0;
@@ -177,7 +184,7 @@ public class GameManager : MonoBehaviour
         {
             if (i >= playerCount)
             {
-                return;
+                break;
             }
             if (gs.Players[i].IsInPrison > 0)
             {
@@ -190,7 +197,33 @@ public class GameManager : MonoBehaviour
             go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
             i++;
         }
+        debugText.text = "" + gs.getActivePlayer().id;
+        debugText2.text = "" + gs.Players[playerID].id;
+        if (gs.Players[playerID] == gs.getActivePlayer())
+        {
+            if (isRollingDice && countDouble < 3)
+                guiButton[0].SetActive(true);
+            else if (countDouble == 3)
+            {
+                guiButton[3].SetActive(true);
+                guiButton[3].GetComponent<TextMeshPro>().text = "Allez en prison !";
+            }
+            else if (isBuying)
+            {
+
+            }
+            else if (false)
+            {
+
+            }
+            else
+            {
+                guiButton[1].SetActive(true);
+            }
+        }
     }
+
+    
 }
 
 public class GuiContainer

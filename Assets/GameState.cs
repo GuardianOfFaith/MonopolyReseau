@@ -17,7 +17,7 @@ public class GameState : MonoBehaviour
     public Sprite[] dices = new Sprite[6];
     public Image dice1;
     public Image dice2;
-    
+    public bool isDouble = false;
     
     public void Creer()
     {
@@ -148,6 +148,8 @@ public class GameState : MonoBehaviour
         if (getActivePlayer().IsInPrison > 0)
             getActivePlayer().IsInPrison--;
         GetComponent<PhotonView>().RPC("ChangePlayer",PhotonTargets.All, "jup", "and jup!");
+        gm.isRollingDice = true;
+        gm.refreshGui();
     }
     //Change the active player
     [PunRPC]
@@ -199,13 +201,19 @@ public class GameState : MonoBehaviour
     }
 
     //Make a dice roll
-    public bool Roll() {
-        
+    public void Roll() {
+        isDouble = false;
         dice_1 = Random.Range(1, 7);
         dice_2 = Random.Range(1, 7);
         dice1.sprite = dices[dice_1-1];
         dice2.sprite = dices[dice_2-1];
-        
+
+        if (dice_1 == dice_2)
+            isDouble = true;
+    }
+
+    public bool isDiceDouble()
+    {
         return dice_1 == dice_2;
     }
     //to get the value of the roll

@@ -300,16 +300,18 @@ public class Player : MonoBehaviour
             gs.dice2.gameObject.SetActive(true);
             if (id == gs.getActivePlayer().id)
             {
-                if (gs.Roll())
+                gs.Roll();
+                if (gs.isDiceDouble())
                 {
                     doubleRolls++;
+                    gs.gm.countDouble = doubleRolls;
                     if (doubleRolls==3)
                     {
                         AllerEnPrison();
                         doubleRolls = 0;
                         return;
                     }
-                
+                    
                 }
                 else
                 {
