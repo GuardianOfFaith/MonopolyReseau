@@ -211,8 +211,6 @@ public class GameManager : MonoBehaviour
             go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
             i++;
         }
-        debugText.text = "" + gs.getActivePlayer().id;      
-        debugText2.text = "" + gs.Players[playerID-1].id;
         if (gs.Players[playerID-1] == gs.getActivePlayer())
         {
             if (isRollingDice && countDouble < 3)
@@ -222,14 +220,14 @@ public class GameManager : MonoBehaviour
                 guiButton[3].SetActive(true);
                 guiButton[3].GetComponent<TextMeshPro>().text = "Allez en prison !";
             }
-            else if (isBuying)
-            {
+            //else if (isBuying)
+            //{
 
-            }
-            else if (false)
-            {
+            //}
+            //else if (false)
+            //{
 
-            }
+            //}
             else
             {
                 guiButton[1].SetActive(true);

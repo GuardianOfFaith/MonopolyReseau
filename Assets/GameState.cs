@@ -190,8 +190,9 @@ public class GameState : MonoBehaviour
     {
         if (getActivePlayer().IsInPrison > 0)
             getActivePlayer().IsInPrison--;
-        GetComponent<PhotonView>().RPC("ChangePlayer",PhotonTargets.All, "jup", "and jup!");
-        
+        GetComponent<PhotonView>().RPC("ChangePlayer", PhotonTargets.All, "jup", "and jup!");
+        gm.isRollingDice = true;
+        gm.refreshGui();
     }
     //Change the active player
     [PunRPC]

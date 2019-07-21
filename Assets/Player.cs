@@ -12,12 +12,13 @@ public class Player : MonoBehaviour
     public GameState gs;
     List<Propriete> properties { set; get; }
     //List<int> cards { get; }
-    int isInPrison;
+    int isInPrison = 0;
     public int id;
     public int doubleRolls = 0;
     
     void Start()
     {
+        IsInPrison = 0;
         gs = GameManager.instance.gs;
         Case = gs.getProprieter(IDCase);
         transform.SetParent(Case.transform);
