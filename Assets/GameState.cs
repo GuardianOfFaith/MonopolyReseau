@@ -267,4 +267,10 @@ public class GameState : MonoBehaviour
     {
         return dice_1 + dice_2;
     }
+
+    public void Buy()
+    {
+        if(getActivePlayer().Money > getProprieter(getActivePlayer().IDCase).prix)
+            getActivePlayer().AddProperty(getProprieter(getActivePlayer().IDCase));
+    }
 }
