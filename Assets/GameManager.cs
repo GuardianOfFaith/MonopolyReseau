@@ -82,8 +82,10 @@ public class GameManager : MonoBehaviour
                 {
                     gs.moveplayerPrison(gs.getActivePlayer().id-1);
                 }
-                
 
+                if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0)
+                    isBuying = true;
+                refreshGui();
                 
                 return;
             }
@@ -97,6 +99,9 @@ public class GameManager : MonoBehaviour
         {
             gs.moveplayer(gs.getActivePlayer().id-1,gs.getDiceRoll());  
         }
+        if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0)
+            isBuying = true;
+        refreshGui();
     }
 
     public void EndTurn()
@@ -250,6 +255,7 @@ public class GameManager : MonoBehaviour
             {
                 guiButton[1].SetActive(true);
             }
+            isRollingDice = false;
         }
     }
 
