@@ -34,7 +34,6 @@ public class Propriete : MonoBehaviour
     public TypeCase Type;
     int housePrice;
     bool isMortgage;
-    public Player p = null;
     
     //AFFICHAGE
     public Material CouleurZone ;

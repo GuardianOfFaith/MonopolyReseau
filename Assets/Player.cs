@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
     //TO ADD AND REMOVE PROPERTY TO PLAYER
     public void AddProperty(Propriete prop)
     {
-        prop.p = gs.getActivePlayer();
+        prop.Owner = id;
         DebitPlayer(prop.Prix);
         properties.Add(prop);
     }
