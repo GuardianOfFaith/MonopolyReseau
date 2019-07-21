@@ -250,11 +250,12 @@ public class GameManager : MonoBehaviour
             else if (isBuying)
             {
                 Propriete prop = gs.getProprieter(gs.getActivePlayer().IDCase);
-                if (prop.Type != Propriete.TypeCase.Allez_en_Prison && prop.Type != Propriete.TypeCase.Chance && prop.Type != Propriete.TypeCase.Communauté && prop.Type != Propriete.TypeCase.Depart && prop.Type != Propriete.TypeCase.Parc && prop.Type != Propriete.TypeCase.Prison && prop.Type != Propriete.TypeCase.Public && prop.Type != Propriete.TypeCase.Taxe && prop.Owner == 0)
+                if (prop.Type != Propriete.TypeCase.Allez_en_Prison && prop.Type != Propriete.TypeCase.Chance && prop.Type != Propriete.TypeCase.Communauté && prop.Type != Propriete.TypeCase.Depart && prop.Type != Propriete.TypeCase.Parc && prop.Type != Propriete.TypeCase.Prison && prop.Type != Propriete.TypeCase.Taxe && prop.Owner == 0)
                 {
                     guiButton[2].SetActive(true);
                     guiButton[2].transform.GetChild(0).GetComponent<Image>().sprite = null;
-                    guiButton[2].transform.GetChild(1).GetComponent<TextMeshPro>().text = prop.name + "\nPrix : " + prop.Prix + "\nGroupe : " + prop.Type.ToString();
+                    if (prop.Name != null  && prop.Prix != null && prop.Type != null)
+                        guiButton[2].transform.GetChild(1).GetComponent<TextMeshPro>().text = prop.Name + "\nPrix : " + prop.Prix + "\nGroupe : " + prop.Type.ToString();
                 }
             }
             //else if (false)
