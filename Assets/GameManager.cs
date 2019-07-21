@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         }
         gs.setPlayerList(list);
         isRollingDice = true;
+        
         InitGui();
     }
 
@@ -210,6 +211,12 @@ public class GameManager : MonoBehaviour
             }
             go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
             i++;
+        }
+        Debug.Log(playerID-1+" "+gs.Players.Count);
+        if (playerID == 0)
+        {
+            return;
+            
         }
         if (gs.Players[playerID-1] == gs.getActivePlayer())
         {

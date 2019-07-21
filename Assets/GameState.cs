@@ -143,7 +143,9 @@ public class GameState : MonoBehaviour
                     gm.gui[i].Nickname = Nickname[i];
                 }
                 gm.InitGui(gm.gui);
+                gm.refreshGui();
                 once = false;
+                
             }
         }
     }
