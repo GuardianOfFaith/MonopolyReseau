@@ -51,9 +51,20 @@ public class GameState : MonoBehaviour
             {
                 Temp[i]=Case[i].Tier;
             }
+            
+            
+            int[] temp2 = new int[gm.playerCount];
+            
+            
+            for (int i = 0; i < gm.playerCount; i++)
+            {
+                temp2[i]=Players[i].doubleRolls;               
+            }
+
                       
             stream.SendNext(temp);
             stream.SendNext(Temp);
+            stream.SendNext(temp2);
             gm.debugText.text = "" + active_Player;
             stream.SendNext(active_Player);
             
@@ -80,6 +91,7 @@ public class GameState : MonoBehaviour
         {
             int[] temp = (int[])stream.ReceiveNext();
             int[] Temp = (int[])stream.ReceiveNext();
+            int[] temp2 = (int[])stream.ReceiveNext();
             int player = (int)stream.ReceiveNext();
             string[] names = (string[])stream.ReceiveNext();
             string[] sprite = (string[])stream.ReceiveNext();
@@ -116,6 +128,11 @@ public class GameState : MonoBehaviour
                 }
             }
             
+            for (int i = 0; i < gm.playerCount; i++)
+            {   
+                Players[i].doubleRolls=temp2[i];
+            }
+            
            if (once)
             {
                 for (int i = 0; i < gm.playerCount; i++)
@@ -143,21 +160,49 @@ public class GameState : MonoBehaviour
         common_Case = 0;
     }
 
+    [PunRPC]
+    public void MasterMovePlayer(int player, int Case)
+    {
+        getActivePlayer().move(Case);
+        getActivePlayer().doubleRolls = 0;
+    }
+
+    public void moveplayer(int player, int Case)
+    {
+        GetComponent<PhotonView>().RPC("MasterMovePlayer",PhotonTargets.MasterClient, player, Case);  
+        
+    }
+
+    [PunRPC]
+    public void MasterGotoPrison(int player)
+    {
+        getActivePlayer().AllerEnPrison();
+        getActivePlayer().doubleRolls = 0;
+    }
+
+    public void moveplayerPrison(int player)
+    {
+        GetComponent<PhotonView>().RPC("MasterGotoPrison",PhotonTargets.MasterClient, player);
+    }
+
+    
     public void NextTurn()
     {
         if (getActivePlayer().IsInPrison > 0)
             getActivePlayer().IsInPrison--;
         GetComponent<PhotonView>().RPC("ChangePlayer",PhotonTargets.All, "jup", "and jup!");
-        gm.isRollingDice = true;
-        gm.refreshGui();
+        
     }
     //Change the active player
     [PunRPC]
-    public void ChangePlayer(string a,string b)
+    public void ChangePlayer(string a, string b)
     {
         active_Player++;
-        if (active_Player >= Players.Count+1)
+        if (active_Player >= Players.Count + 1){
             active_Player = 1;
+        }
+        gm.isRollingDice = true;
+        gm.refreshGui();
     }
     public Player getActivePlayer()
     {

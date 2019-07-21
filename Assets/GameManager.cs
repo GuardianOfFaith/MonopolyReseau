@@ -72,15 +72,29 @@ public class GameManager : MonoBehaviour
             gs.getActivePlayer().doubleRolls++;
             if (gs.getActivePlayer().doubleRolls == 3)
             {
-                gs.getActivePlayer().AllerEnPrison();
-                gs.getActivePlayer().doubleRolls = 0;
+                if (PhotonNetwork.isMasterClient)
+                {
+                    gs.getActivePlayer().AllerEnPrison();
+                    gs.getActivePlayer().doubleRolls = 0;
+                }
+                else
+                {
+                    gs.moveplayerPrison(gs.getActivePlayer().id-1);
+                }
+                
+
+                
                 return;
             }
+        }           
+        if (PhotonNetwork.isMasterClient)
+        {
+            gs.getActivePlayer().move(gs.getDiceRoll());
+            gs.getActivePlayer().doubleRolls = 0;
         }
         else
         {
-            gs.getActivePlayer().doubleRolls = 0;
-            gs.getActivePlayer().move(gs.getDiceRoll());
+            gs.moveplayer(gs.getActivePlayer().id-1,gs.getDiceRoll());  
         }
     }
 
@@ -197,9 +211,9 @@ public class GameManager : MonoBehaviour
             go.transform.Find("Money").GetComponentInChildren<TextMeshProUGUI>().text = gs.Players[i].Money.ToString();
             i++;
         }
-        debugText.text = "" + gs.getActivePlayer().id;
-        debugText2.text = "" + gs.Players[playerID].id;
-        if (gs.Players[playerID] == gs.getActivePlayer())
+        debugText.text = "" + gs.getActivePlayer().id;      
+        debugText2.text = "" + gs.Players[playerID-1].id;
+        if (gs.Players[playerID-1] == gs.getActivePlayer())
         {
             if (isRollingDice && countDouble < 3)
                 guiButton[0].SetActive(true);
