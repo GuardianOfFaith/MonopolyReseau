@@ -672,7 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 4
-  Prix: 0
+  Prix: 20000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -2153,7 +2153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 25
-  Prix: 0
+  Prix: 20000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 6
-  Prix: 0
+  Prix: 10000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -3041,7 +3041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 19
-  Prix: 0
+  Prix: 20000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -3904,7 +3904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 5
-  Prix: 0
+  Prix: 20000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -5521,7 +5521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 39
-  Prix: 0
+  Prix: 40000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -6344,7 +6344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 35
-  Prix: 0
+  Prix: 20000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -6521,7 +6521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 12
-  Prix: 0
+  Prix: 15000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -7043,7 +7043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 34
-  Prix: 0
+  Prix: 32000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -7146,7 +7146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 13
-  Prix: 0
+  Prix: 14000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -7352,7 +7352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 16
-  Prix: 0
+  Prix: 18000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -7455,7 +7455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 31
-  Prix: 0
+  Prix: 30000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -7558,7 +7558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 1
-  Prix: 0
+  Prix: 6000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -7961,7 +7961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 37
-  Prix: 0
+  Prix: 35000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -8999,7 +8999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 29
-  Prix: 0
+  Prix: 28000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -9961,7 +9961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 38
-  Prix: 0
+  Prix: 10000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -12170,7 +12170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 8
-  Prix: 0
+  Prix: 10000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -12753,7 +12753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 9
-  Prix: 0
+  Prix: 12000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -14332,7 +14332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 3
-  Prix: 0
+  Prix: 6000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -19309,7 +19309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 15
-  Prix: 0
+  Prix: 20000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -19412,7 +19412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 28
-  Prix: 0
+  Prix: 15000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -19515,7 +19515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 24
-  Prix: 0
+  Prix: 24000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -19852,7 +19852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 21
-  Prix: 0
+  Prix: 22000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -20984,7 +20984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 18
-  Prix: 0
+  Prix: 18000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -22109,7 +22109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 14
-  Prix: 0
+  Prix: 16000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -22286,7 +22286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 11
-  Prix: 0
+  Prix: 14000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -22389,7 +22389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 23
-  Prix: 0
+  Prix: 22000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -23110,7 +23110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 26
-  Prix: 0
+  Prix: 26000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -24235,7 +24235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 27
-  Prix: 0
+  Prix: 26000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0
@@ -24572,7 +24572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   id: 32
-  Prix: 0
+  Prix: 30000
   Tier: 0
   ZoneMaison: {fileID: 0}
   RueMaison: 0

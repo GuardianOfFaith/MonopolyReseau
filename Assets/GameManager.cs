@@ -250,7 +250,7 @@ public class GameManager : MonoBehaviour
             else if (isBuying)
             {
                 Propriete prop = gs.getProprieter(gs.getActivePlayer().IDCase);
-                if (prop.Type != Propriete.TypeCase.Allez_en_Prison && prop.Type != Propriete.TypeCase.Chance && prop.Type != Propriete.TypeCase.Communaut� && prop.Type != Propriete.TypeCase.Depart && prop.Type != Propriete.TypeCase.Parc && prop.Type != Propriete.TypeCase.Prison && prop.Type != Propriete.TypeCase.Taxe && prop.Owner == 0)
+                if (prop.Type != Propriete.TypeCase.Allez_en_Prison && prop.Type != Propriete.TypeCase.Chance && prop.Type != Propriete.TypeCase.Communauté && prop.Type != Propriete.TypeCase.Depart && prop.Type != Propriete.TypeCase.Parc && prop.Type != Propriete.TypeCase.Prison && prop.Type != Propriete.TypeCase.Taxe && prop.Owner == 0)
                 {
                     guiButton[2].SetActive(true);
                     guiButton[2].transform.GetChild(0).GetComponent<Image>().sprite = null;
