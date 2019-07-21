@@ -187,7 +187,10 @@ public class GameState : MonoBehaviour
     {
         Case[_Case].Owner = getActivePlayer().id;
         getActivePlayer().properties.Add(Case[_Case]);
+        Debug.Log("payin");
         getActivePlayer().money -= Case[_Case].prix;
+        Debug.Log( getActivePlayer().money+" "+Case[_Case].name);
+        gm.refreshGui();
     }
     
     public void BuyPropiete(int Case)
@@ -237,6 +240,7 @@ public class GameState : MonoBehaviour
         if (active_Player >= Players.Count + 1){
             active_Player = 1;
         }
+        Roll();
         gm.isRollingDice = true;
         gm.refreshGui();
     }
@@ -305,7 +309,7 @@ public class GameState : MonoBehaviour
 
     public void Buy()
     {
-        if(getActivePlayer().Money > getProprieter(getActivePlayer().IDCase).prix)
-            getActivePlayer().AddProperty(getProprieter(getActivePlayer().IDCase));
+        if (getActivePlayer().Money > getProprieter(getActivePlayer().IDCase).prix)
+            BuyPropiete(getActivePlayer().IDCase);
     }
 }

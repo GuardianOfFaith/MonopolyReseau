@@ -267,7 +267,7 @@ public class Player : MonoBehaviour
                     break; 
             }
 
-            if (Case.Owner > 0)
+            if (Case.Owner > 0 || Case.Owner==id)
             {
                 gs.PlayerPay(id, Case.Owner, Case.prix);
             }

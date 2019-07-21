@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         }
         if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0)
             isBuying = true;
-        else paid(gs.getProprieter(gs.getActivePlayer().IDCase).getPrice(false), gs.getProprieter(gs.getActivePlayer().IDCase).Owner);
+        else// paid(gs.getProprieter(gs.getActivePlayer().IDCase).getPrice(false), gs.getProprieter(gs.getActivePlayer().IDCase).Owner);
         refreshGui();
     }
 
