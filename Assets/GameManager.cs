@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
         {
             gs.moveplayer(gs.getActivePlayer().id-1,gs.getDiceRoll());  
         }
-        if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0)
+        if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0 || gs.getProprieter(gs.getActivePlayer().IDCase).Owner == gs.getActivePlayer().id)
             isBuying = true;
         else// paid(gs.getProprieter(gs.getActivePlayer().IDCase).getPrice(false), gs.getProprieter(gs.getActivePlayer().IDCase).Owner);
         refreshGui();

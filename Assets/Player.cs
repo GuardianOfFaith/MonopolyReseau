@@ -164,7 +164,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         IDCase = 0;
-        money = 15000;
+        money = 30000;
         properties = new List<Propriete>();
         isInPrison = 0;
     }
