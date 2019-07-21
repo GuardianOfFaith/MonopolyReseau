@@ -10,6 +10,7 @@ public class Propriete : MonoBehaviour
     public int Tier = 0;
     public Transform ZoneMaison;
     public bool RueMaison = false;
+    public int Owner = 0;
     public enum TypeCase
     {
         Depart,

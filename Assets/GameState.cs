@@ -176,6 +176,39 @@ public class GameState : MonoBehaviour
     }
 
     [PunRPC]
+    public void MasterBuyPropiete(int _Case)
+    {
+        Case[_Case].CreerMaison();
+        
+    }
+    
+    [PunRPC]
+    public void AllBuyPropiete(int _Case)
+    {
+        Case[_Case].Owner = getActivePlayer().id;
+        getActivePlayer().properties.Add(Case[_Case]);
+        getActivePlayer().money -= Case[_Case].prix;
+    }
+    
+    public void BuyPropiete(int Case)
+    {
+        GetComponent<PhotonView>().RPC("MasterBuyPropiete",PhotonTargets.MasterClient,  Case);  
+        GetComponent<PhotonView>().RPC("AllBuyPropiete",PhotonTargets.All,  Case);    
+    }
+    
+    [PunRPC]
+    public void CheckPlayerPay(int payer,int receiver,int amount)
+    {
+        Players[payer - 1].money = Mathf.Clamp(Players[payer - 1].Money-amount,0,100000);
+        Players[receiver - 1].money += amount;
+    }
+    
+    public void PlayerPay(int payer,int receiver,int amount)
+    {
+        GetComponent<PhotonView>().RPC("CheckPlayerPay",PhotonTargets.All,  payer,receiver,amount);  
+    }
+    
+    [PunRPC]
     public void MasterGotoPrison(int player)
     {
         getActivePlayer().AllerEnPrison();

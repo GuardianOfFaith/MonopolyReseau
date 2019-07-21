@@ -6,11 +6,11 @@ using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
-    int money;
+    public int money;
     public int IDCase = 0;
     public Propriete Case;
     public GameState gs;
-    List<Propriete> properties { set; get; }
+    public List<Propriete> properties { set; get; }
     //List<int> cards { get; }
     int isInPrison = 0;
     public int id;
@@ -264,6 +264,11 @@ public class Player : MonoBehaviour
                 case "p4":
                     transform.localPosition = new Vector3(20, -30, 0);
                     break; 
+            }
+
+            if (Case.Owner > 0)
+            {
+                gs.PlayerPay(id, Case.Owner, Case.prix);
             }
         }
         
