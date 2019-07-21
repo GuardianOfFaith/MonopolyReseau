@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     public bool isRollingDice = false;
     public int countDouble = 0;
-    bool isBuying = false;
+    public bool isBuying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -87,7 +87,13 @@ public class GameManager : MonoBehaviour
 
                 if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0)
                     isBuying = true;
-                else paid(gs.getProprieter(gs.getActivePlayer().IDCase).getPrice(false), gs.getProprieter(gs.getActivePlayer().IDCase).Owner);
+                else
+                {
+                    Player p = gs.getActivePlayer();
+                    Propriete P = gs.getProprieter(gs.getActivePlayer().IDCase);
+                    
+                    gs.PlayerPay(p.id, P.Owner, P.prix*(P.Tier));
+                }
 
                 refreshGui();
                 
@@ -105,15 +111,15 @@ public class GameManager : MonoBehaviour
         }
         if (gs.getProprieter(gs.getActivePlayer().IDCase).Owner == 0 || gs.getProprieter(gs.getActivePlayer().IDCase).Owner == gs.getActivePlayer().id)
             isBuying = true;
-        else// paid(gs.getProprieter(gs.getActivePlayer().IDCase).getPrice(false), gs.getProprieter(gs.getActivePlayer().IDCase).Owner);
+        else
+        {
+            Player p = gs.getActivePlayer();
+            Propriete P = gs.getProprieter(gs.getActivePlayer().IDCase);
+            gs.PlayerPay(p.id, P.Owner, P.prix*(P.Tier+1));
+        }
         refreshGui();
     }
 
-    public void paid(int price, int player)
-    {
-        gs.Players[player].CreditPlayer(price);
-        gs.getActivePlayer().DebitPlayer(price);
-    }
     public void EndTurn()
     {
         if (gs.getActivePlayer().IsInPrison > 0)

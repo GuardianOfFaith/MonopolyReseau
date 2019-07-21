@@ -147,7 +147,9 @@ public class GameState : MonoBehaviour
                 once = false;
                 
             }
+           gm.refreshGui();
         }
+        
     }
     
     //To Add money in the common pot
@@ -228,8 +230,8 @@ public class GameState : MonoBehaviour
     {
         if (getActivePlayer().IsInPrison > 0)
             getActivePlayer().IsInPrison--;
-        GetComponent<PhotonView>().RPC("ChangePlayer", PhotonTargets.All, "jup", "and jup!");
-        gm.isRollingDice = true;
+        gm.isRollingDice = false;
+        GetComponent<PhotonView>().RPC("ChangePlayer", PhotonTargets.All, "jup", "and jup!"); 
         gm.refreshGui();
     }
     //Change the active player
@@ -240,8 +242,17 @@ public class GameState : MonoBehaviour
         if (active_Player >= Players.Count + 1){
             active_Player = 1;
         }
-        Roll();
-        gm.isRollingDice = true;
+        
+        if (active_Player == gm.playerID)
+        {
+            gm.isRollingDice = true;
+            Roll();
+        }
+        else
+        {
+            gm.guiButton[3].SetActive(false);
+        }
+        
         gm.refreshGui();
     }
     public Player getActivePlayer()

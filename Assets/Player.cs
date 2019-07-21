@@ -266,11 +266,6 @@ public class Player : MonoBehaviour
                     transform.localPosition = new Vector3(20, -30, 0);
                     break; 
             }
-
-            if (Case.Owner > 0 || Case.Owner==id)
-            {
-                gs.PlayerPay(id, Case.Owner, Case.prix);
-            }
         }
         
         return IDCase;
