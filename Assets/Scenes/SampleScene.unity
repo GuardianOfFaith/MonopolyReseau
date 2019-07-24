@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 4
   Prix: 20000
   Tier: 0
@@ -2277,7 +2277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 20
   Prix: 0
   Tier: 0
@@ -2634,7 +2634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 25
   Prix: 20000
   Tier: 0
@@ -2739,7 +2739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 6
   Prix: 10000
   Tier: 0
@@ -3526,7 +3526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 19
   Prix: 20000
   Tier: 0
@@ -4551,7 +4551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 5
   Prix: 20000
   Tier: 0
@@ -6170,7 +6170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 39
   Prix: 40000
   Tier: 0
@@ -7155,7 +7155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 35
   Prix: 20000
   Tier: 0
@@ -7334,7 +7334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 12
   Prix: 15000
   Tier: 0
@@ -7832,7 +7832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 7
   Prix: 0
   Tier: 0
@@ -8019,7 +8019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 34
   Prix: 32000
   Tier: 0
@@ -8124,7 +8124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 13
   Prix: 14000
   Tier: 0
@@ -8228,7 +8228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 22
   Prix: 0
   Tier: 0
@@ -8333,7 +8333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 16
   Prix: 18000
   Tier: 0
@@ -8438,7 +8438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 31
   Prix: 30000
   Tier: 0
@@ -8543,7 +8543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 1
   Prix: 6000
   Tier: 0
@@ -8818,6 +8818,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1829114281}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &599876651
@@ -8948,7 +8959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 37
   Prix: 35000
   Tier: 0
@@ -9255,7 +9266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 30
   Prix: 0
   Tier: 0
@@ -9990,7 +10001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 29
   Prix: 28000
   Tier: 0
@@ -10953,7 +10964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 38
   Prix: 10000
   Tier: 0
@@ -11421,7 +11432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 2
   Prix: 0
   Tier: 0
@@ -13968,7 +13979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 8
   Prix: 10000
   Tier: 0
@@ -14553,7 +14564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 9
   Prix: 12000
   Tier: 0
@@ -16454,7 +16465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 3
   Prix: 6000
   Tier: 0
@@ -17746,6 +17757,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RTS_Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2056488, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
+      propertyPath: far clip plane
+      value: 2100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056488, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
+      propertyPath: field of view
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 459968, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1300
@@ -17841,14 +17860,6 @@ PrefabInstance:
     - target: {fileID: 11455738, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: followingSpeed
       value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2056488, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
-      propertyPath: far clip plane
-      value: 2100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2056488, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
-      propertyPath: field of view
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
@@ -18114,7 +18125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 33
   Prix: 0
   Tier: 0
@@ -18698,7 +18709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 0
   Prix: 0
   Tier: 0
@@ -19891,7 +19902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 17
   Prix: 0
   Tier: 0
@@ -20159,7 +20170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 10
   Prix: 0
   Tier: 0
@@ -20435,7 +20446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 36
   Prix: 0
   Tier: 0
@@ -22258,7 +22269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 15
   Prix: 20000
   Tier: 0
@@ -22363,7 +22374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 28
   Prix: 15000
   Tier: 0
@@ -22628,7 +22639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 24
   Prix: 24000
   Tier: 0
@@ -23127,7 +23138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 21
   Prix: 22000
   Tier: 0
@@ -24901,7 +24912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 18
   Prix: 18000
   Tier: 0
@@ -26348,7 +26359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 14
   Prix: 16000
   Tier: 0
@@ -26527,7 +26538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 11
   Prix: 14000
   Tier: 0
@@ -26632,7 +26643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 23
   Prix: 22000
   Tier: 0
@@ -27515,7 +27526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 26
   Prix: 26000
   Tier: 0
@@ -28802,7 +28813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 27
   Prix: 26000
   Tier: 0
@@ -29141,7 +29152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056d392999a47424bbbfcbba3af2e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Nom: 
   id: 32
   Prix: 30000
   Tier: 0

@@ -274,6 +274,13 @@ public class GameManager : MonoBehaviour
             }
             isRollingDice = false;
         }
+        else
+        {
+            foreach( GameObject g in guiButton)
+            {
+                g.SetActive(false);
+            }
+        }
     }
 
     
