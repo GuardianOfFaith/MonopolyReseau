@@ -27,6 +27,7 @@ public class GameState : MonoBehaviour
         Case = gm.Plateau.GetComponentsInChildren<Propriete>();
         foreach (var propriete in Case.OrderBy(propriete => propriete.id));
         gm.carte.Creer();
+        
     }    
 
     public Propriete getProprieter(int i)
@@ -38,7 +39,7 @@ public class GameState : MonoBehaviour
     {
         if (Players.Count > 0)
         {
-            cam.targetFollow = Players[active_Player - 1].transform;
+            
         }
     }
 
@@ -111,6 +112,7 @@ public class GameState : MonoBehaviour
                 stream.SendNext(argent);
                 stream.SendNext(Nickname);
             }
+            
         }
         else
         {
@@ -176,6 +178,7 @@ public class GameState : MonoBehaviour
                 gm.InitGui(gm.gui);
                 gm.refreshGui();
                 once = false;
+                cam.targetFollow = Players[active_Player - 1].transform;
                 
             }
            gm.refreshGui();
@@ -325,7 +328,7 @@ public class GameState : MonoBehaviour
         {
             gm.guiButton[3].SetActive(false);
         }
-        
+        cam.targetFollow = Players[active_Player - 1].transform;
         gm.refreshGui();
     }
     public Player getActivePlayer()
@@ -358,7 +361,7 @@ public class GameState : MonoBehaviour
             j++;
         }
         Players = li;
-       
+        cam.targetFollow = Players[active_Player - 1].transform;
     }
 
     //Remove a defeated player
