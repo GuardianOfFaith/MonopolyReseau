@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Propriete : MonoBehaviour
 {
-    public string name;
+    public string Nom;
     public int id;
     public int Prix;
     public int Tier = 0;
     public Transform ZoneMaison;
     public bool RueMaison = false;
     public int Owner = 0;
+    public TextMeshProUGUI ownerName;
     public enum TypeCase
     {
         Depart,
@@ -110,10 +112,10 @@ public class Propriete : MonoBehaviour
     
     void Start()
     {
-        name = gameObject.name;
+        Nom = gameObject.name;
         PrefabMaison = Resources.Load<GameObject>("Maison");
         PrefabHotel = Resources.Load<GameObject>("Hotel");
-        
+ 
         switch (Type)
         {
             case TypeCase.Violet:

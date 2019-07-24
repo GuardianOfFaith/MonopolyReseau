@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using RTS_Cam;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -18,6 +19,8 @@ public class GameState : MonoBehaviour
     public Image dice1;
     public Image dice2;
     public bool isDouble = false;
+    public RTS_Camera cam;
+    public Carte cartes;
     
     public void Creer()
     {
@@ -31,6 +34,14 @@ public class GameState : MonoBehaviour
         return Case[i];
     }
 
+    private void Update()
+    {
+        if (Players.Count > 0)
+        {
+            cam.targetFollow = Players[active_Player - 1].transform;
+        }
+    }
+
     public bool once = true;
     
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -40,20 +51,33 @@ public class GameState : MonoBehaviour
             int[] temp = new int[gm.playerCount];
             
             
-            for (int i = 0; i < gm.playerCount; i++)
+            for (int i = 0; i < gm.playerCount; i++)// Player Position
             {
                 temp[i]=Players[i].IDCase;               
             }
                 
             
-            int[] Temp = new int[40];
+            int[] Temp = new int[40]; // Display houses on properties
             for (int i = 0; i < 40; i++)
             {
                 Temp[i]=Case[i].Tier;
             }
             
+            string[] Tempname = new String[40]; // Display owner name on properties
+            for (int i = 0; i < 40; i++)
+            {
+                if (Case[i].ownerName)
+                {
+                    Tempname[i] = Case[i].ownerName.text;
+                }
+                else
+                {
+                    Tempname[i] = "";  
+                }
+                
+            }
             
-            int[] temp2 = new int[gm.playerCount];
+            int[] temp2 = new int[gm.playerCount];// Synch number of double Rolls
             
             
             for (int i = 0; i < gm.playerCount; i++)
@@ -64,6 +88,7 @@ public class GameState : MonoBehaviour
                       
             stream.SendNext(temp);
             stream.SendNext(Temp);
+            stream.SendNext(Tempname);
             stream.SendNext(temp2);
             gm.debugText.text = "" + active_Player;
             stream.SendNext(active_Player);
@@ -91,6 +116,7 @@ public class GameState : MonoBehaviour
         {
             int[] temp = (int[])stream.ReceiveNext();
             int[] Temp = (int[])stream.ReceiveNext();
+            string[] Tempname = (string[])stream.ReceiveNext();
             int[] temp2 = (int[])stream.ReceiveNext();
             int player = (int)stream.ReceiveNext();
             string[] names = (string[])stream.ReceiveNext();
@@ -109,6 +135,11 @@ public class GameState : MonoBehaviour
      
             for (int i = 0; i < Temp.Length; i++)
             {
+                if (Case[i].ownerName)
+                {
+                    Case[i].ownerName.text = Tempname[i];  
+                }
+                
                 if (Temp[i] > Case[i].Tier)
                 {
                     int k = Temp[i] - Case[i].Tier;
@@ -181,7 +212,7 @@ public class GameState : MonoBehaviour
     public void MasterBuyPropiete(int _Case)
     {
         Case[_Case].CreerMaison();
-        
+        Case[_Case].ownerName.text = "p"+getActivePlayer().id;
     }
     
     [PunRPC]
@@ -212,6 +243,48 @@ public class GameState : MonoBehaviour
     {
         GetComponent<PhotonView>().RPC("CheckPlayerPay",PhotonTargets.All,  payer,receiver,amount);  
     }
+
+    [PunRPC]
+    public void AllGainMoney(int payer,int amount)
+    {
+        Players[payer - 1].money += amount;
+    }
+    
+    public void GainMoney(int payer,int amount)
+    {
+        GetComponent<PhotonView>().RPC("AllGainMoney",PhotonTargets.All,  payer,amount);  
+    }
+
+    [PunRPC]
+    public void AllDrawCard(EffetCarte.CarteType type)
+    {
+        switch (type)
+        {
+            case EffetCarte.CarteType.Chance:
+                cartes.DrawnChance();
+                break;
+            case EffetCarte.CarteType.Communauté:
+                cartes.DrawnComu();
+                break;
+        }
+    }
+    
+    public void DrawCard(EffetCarte.CarteType type)
+    {
+        GetComponent<PhotonView>().RPC("AllDrawCard",PhotonTargets.All,  type);  
+    }
+    
+    [PunRPC]
+    public void AllLooseMoney(int payer,int amount)
+    {
+        Players[payer - 1].money = Mathf.Clamp(Players[payer - 1].Money-amount,0,100000);
+    }
+    
+    public void LooseMoney(int payer,int amount)
+    {
+        GetComponent<PhotonView>().RPC("AllLooseMoney",PhotonTargets.All,  payer,amount);  
+    }
+
     
     [PunRPC]
     public void MasterGotoPrison(int player)

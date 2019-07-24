@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     int isInPrison = 0;
     public int id;
     public int doubleRolls = 0;
-    
+    //public String Nickname;
     void Start()
     {
         IsInPrison = 0;
@@ -171,8 +171,28 @@ public class Player : MonoBehaviour
     
     public int move(int movement)
     {
-        IDCase = (IDCase + movement) % 40;
+        
+        Debug.Log(IDCase + movement);
+        if (IDCase + movement>=39)
+        {
+            Debug.Log( "Get your money");
+            gs.GainMoney(id,20000);
+        }
+        
+        IDCase = (IDCase + movement) % 40;  
         Case = gs.getProprieter(IDCase);
+        if (Case.type == Propriete.TypeCase.Taxe)
+        {
+            gs.LooseMoney(id,Case.prix);
+        }
+        if (Case.type == Propriete.TypeCase.Communauté)
+        {
+            gs.cartes.DrawCommunauté();
+        }
+        if (Case.type == Propriete.TypeCase.Chance)
+        {
+            gs.cartes.DrawChance();
+        }
         if (Case.Type == Propriete.TypeCase.Prison)
         {
             transform.SetParent(Case.transform.GetChild(0));
@@ -276,6 +296,7 @@ public class Player : MonoBehaviour
         IDCase = 10;
         Case = gs.getProprieter(IDCase);
         transform.SetParent(Case.transform.GetChild(2));
+        isInPrison = 3;
         switch (name)
         {
             case "p1":

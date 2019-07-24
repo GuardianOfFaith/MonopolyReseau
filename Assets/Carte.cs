@@ -10,6 +10,7 @@ public class Carte : MonoBehaviour
     public List<EffetCarte> CartesCommunaute = new List<EffetCarte>();
     public TextMeshProUGUI Title;
     public TextMeshProUGUI Text;
+    public GameState gs;
     
     public void Creer()
     {
@@ -36,28 +37,55 @@ public class Carte : MonoBehaviour
         }
     }
 
-    public void DrawChance()
+    public void DrawnChance()
     {
         EffetCarte et = CartesChance[0];
-        CartesChance.Remove(CartesChance[0]);
-        CartesChance.Add(CartesChance[0]);
 
         Title.text = et.Title;
         Text.text = et.Text;
 
-        //EFFET
+        gs.cam.targetFollow = transform;
+        CartesChance.Remove(CartesChance[0]);
+        CartesChance.Add(CartesChance[0]);
+    }
+    public void DrawChance()
+    {
+        EffetCarte et = CartesChance[0];
+        gs.DrawCard(et.Type);
+        switch (et.effet)
+        {
+            case EffetCarte.Effet.Payer:
+                gs.LooseMoney(gs.getActivePlayer().id,et.amount);
+                break;
+            case EffetCarte.Effet.Bouger:
+                gs.moveplayer(gs.getActivePlayer().id,et.amount);
+                break;
+            case EffetCarte.Effet.Prison:
+                gs.moveplayerPrison(gs.getActivePlayer().id);
+                break;
+            case EffetCarte.Effet.Recevoir:
+                gs.GainMoney(gs.getActivePlayer().id,et.amount);
+                break;
+        }
+    }
+
+    public void DrawnComu()
+    {
+        EffetCarte et = CartesCommunaute[0];
+        Title.text = et.Title;
+        Text.text = et.Text;
+        CartesCommunaute.Remove(CartesCommunaute[0]);
+        CartesCommunaute.Add(CartesCommunaute[0]);
+        gs.cam.targetFollow = transform;
     }
     
     public void DrawCommunauté()
     {
         EffetCarte et = CartesCommunaute[0];
-        CartesCommunaute.Remove(CartesCommunaute[0]);
-        CartesCommunaute.Add(CartesCommunaute[0]);
-
         Title.text = et.Title;
         Text.text = et.Text;
-
-        //EFFET
+        gs.DrawCard(et.Type);
+        gs.GainMoney(gs.getActivePlayer().id,et.amount);
     }
 
 }
@@ -106,7 +134,7 @@ public class EffetCarte
                     Title = "Deplacement forcer";
                     int id = Random.Range(0, 40);
                     
-                    Text = "Vous partez pour " + GameManager.instance.gs.Case[id].name;
+                    Text = "Vous partez pour " + GameManager.instance.gs.Case[id].Nom;
                     amount = id;
                     break;
                 case 1:
