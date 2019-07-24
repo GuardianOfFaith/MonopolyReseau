@@ -21,7 +21,7 @@ public class GameState : MonoBehaviour
     public bool isDouble = false;
     public RTS_Camera cam;
     public Carte cartes;
-    
+    public bool DebugStop = false;
     public void Creer()
     {
         Case = gm.Plateau.GetComponentsInChildren<Propriete>();
@@ -37,10 +37,7 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        if (Players.Count > 0)
-        {
-            
-        }
+        gm.debugText.text ="Count "+ Players.Count;
     }
 
     public bool once = true;
@@ -54,19 +51,17 @@ public class GameState : MonoBehaviour
             
             for (int i = 0; i < gm.playerCount; i++)// Player Position
             {
-                temp[i]=Players[i].IDCase;               
+                temp[i]=Players[i].IDCase;           
             }
                 
             
             int[] Temp = new int[40]; // Display houses on properties
+            
+            string[] Tempname = new String[40]; // Display owner name on properties
+            
             for (int i = 0; i < 40; i++)
             {
                 Temp[i]=Case[i].Tier;
-            }
-            
-            string[] Tempname = new String[40]; // Display owner name on properties
-            for (int i = 0; i < 40; i++)
-            {
                 if (Case[i].ownerName)
                 {
                     Tempname[i] = Case[i].ownerName.text;
@@ -240,6 +235,7 @@ public class GameState : MonoBehaviour
     {
         Players[payer - 1].money = Mathf.Clamp(Players[payer - 1].Money-amount,0,100000);
         Players[receiver - 1].money += amount;
+        gm.refreshGui();
     }
     
     public void PlayerPay(int payer,int receiver,int amount)
@@ -251,11 +247,13 @@ public class GameState : MonoBehaviour
     public void AllGainMoney(int payer,int amount)
     {
         Players[payer - 1].money += amount;
+        gm.refreshGui();
     }
     
     public void GainMoney(int payer,int amount)
     {
-        GetComponent<PhotonView>().RPC("AllGainMoney",PhotonTargets.All,  payer,amount);  
+        GetComponent<PhotonView>().RPC("AllGainMoney",PhotonTargets.All,  payer,amount); 
+        
     }
 
     [PunRPC]
@@ -281,6 +279,7 @@ public class GameState : MonoBehaviour
     public void AllLooseMoney(int payer,int amount)
     {
         Players[payer - 1].money = Mathf.Clamp(Players[payer - 1].Money-amount,0,100000);
+        gm.refreshGui();
     }
     
     public void LooseMoney(int payer,int amount)
@@ -300,6 +299,8 @@ public class GameState : MonoBehaviour
     {
         GetComponent<PhotonView>().RPC("MasterGotoPrison",PhotonTargets.MasterClient, player);
     }
+    
+    
 
     
     public void NextTurn()
@@ -314,22 +315,31 @@ public class GameState : MonoBehaviour
     [PunRPC]
     public void ChangePlayer(string a, string b)
     {
+        Debug.Log("Reroll");
         active_Player++;
         if (active_Player >= Players.Count + 1){
             active_Player = 1;
         }
-        
-        if (active_Player == gm.playerID)
+
+        if (Players[active_Player - 1].canPlay)
         {
-            gm.isRollingDice = true;
-            Roll();
+            if (active_Player == gm.playerID)
+            {
+                gm.isRollingDice = true;
+                Roll();
+            }
+            else
+            {
+                gm.guiButton[3].SetActive(false);
+            }
+            cam.targetFollow = Players[active_Player - 1].transform;
+            gm.refreshGui(); 
         }
         else
         {
-            gm.guiButton[3].SetActive(false);
+            NextTurn();
         }
-        cam.targetFollow = Players[active_Player - 1].transform;
-        gm.refreshGui();
+        
     }
     public Player getActivePlayer()
     {
@@ -359,6 +369,11 @@ public class GameState : MonoBehaviour
             p.id = j+1;
             //gm.debugText.text += " " + li[j].name + " " + (j+1); 
             j++;
+        }
+
+        if (li.Count == 1)
+        {
+            DebugStop = true;
         }
         Players = li;
         cam.targetFollow = Players[active_Player - 1].transform;

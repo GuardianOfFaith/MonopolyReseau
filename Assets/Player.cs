@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
     int isInPrison = 0;
     public int id;
     public int doubleRolls = 0;
+
+    public bool canPlay = true;
     //public String Nickname;
     void Start()
     {
@@ -39,7 +42,8 @@ public class Player : MonoBehaviour
                 break; 
         }
     }
-    
+
+   
     
     //public int Id
     //{
@@ -313,13 +317,26 @@ public class Player : MonoBehaviour
                 break; 
         }
     }
+
+    public void Kill()
+    {
+       /* foreach (Propriete p in properties)
+        {
+            for (int i = 0; i < p.Tier; i++)
+            {
+                //p.RetirerMaison();
+            }
+        }*/
+        
+    }
     
     // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            gs.dice1.gameObject.SetActive(true);
+           /* gs.dice1.gameObject.SetActive(true);
             gs.dice2.gameObject.SetActive(true);
             if (id == gs.getActivePlayer().id)
             {
@@ -341,10 +358,10 @@ public class Player : MonoBehaviour
                     doubleRolls = 0;
                     move(gs.getDiceRoll());
                 }
-            }
-            
+            }*/
             
             //AllerEnPrison();
         }
+       
     }
 }
