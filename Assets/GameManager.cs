@@ -219,19 +219,19 @@ public class GameManager : MonoBehaviour
         OnGui();
     }
 
-    public void endGame()
-    {
-        foreach(GameObject g in guiButton)
-        {
-            g.SetActive(false);
-        }
-        guiButton[3].GetComponentInChildren<TextMeshProUGUI>().text = "Partie Terminée\nJoueur " + gs.Players[0].name + " à gagné";
-        guiButton[3].GetComponentInChildren<Button>().onClick.AddListener(reloadMenu);
-    }
-    public void reloadMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
+    //public void endGame()
+    //{
+    //    foreach(GameObject g in guiButton)
+    //    {
+    //        g.SetActive(false);
+    //    }
+    //    guiButton[3].GetComponentInChildren<TextMeshProUGUI>().text = "Partie Terminée\nJoueur " + gs.Players[0].name + " à gagné";
+    //    guiButton[3].GetComponentInChildren<Button>().onClick.AddListener(reloadMenu);
+    //}
+    //public void reloadMenu()
+    //{
+    //    SceneManager.LoadScene(0);
+    //}
 
 
     void OnGui()
@@ -272,7 +272,7 @@ public class GameManager : MonoBehaviour
             else if (isBuying)
             {
                 Propriete prop = gs.getProprieter(gs.getActivePlayer().IDCase);
-                if (prop.Type != Propriete.TypeCase.Allez_en_Prison && prop.Type != Propriete.TypeCase.Chance && prop.Type != Propriete.TypeCase.Communauté && prop.Type != Propriete.TypeCase.Depart && prop.Type != Propriete.TypeCase.Parc && prop.Type != Propriete.TypeCase.Prison && prop.Type != Propriete.TypeCase.Taxe && prop.Owner == 0)
+                if (prop.Type != Propriete.TypeCase.Allez_en_Prison && prop.Type != Propriete.TypeCase.Chance && prop.Type != Propriete.TypeCase.Communauté && prop.Type != Propriete.TypeCase.Depart && prop.Type != Propriete.TypeCase.Parc && prop.Type != Propriete.TypeCase.Prison && prop.Type != Propriete.TypeCase.Taxe && prop.Owner == 0 && gs.Players[i].Money > prop.prix)
                 {
                     guiButton[2].SetActive(true);
                     guiButton[2].transform.GetChild(0).GetComponent<Image>().sprite = null;
@@ -280,7 +280,7 @@ public class GameManager : MonoBehaviour
                     if (prop.Name != null  && prop.Prix != null && prop.Type != null)
                         guiButton[2].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = prop.Name + "\nPrix : " + prop.Prix + "\nGroupe : " + prop.Type.ToString();
                 }
-                else if (prop.Owner == playerID)
+                else if (prop.Owner == playerID && gs.Players[i].Money > prop.Prix * 0.5f * prop.Tier)
                 {
                     guiButton[2].SetActive(true);
                     guiButton[2].transform.GetChild(0).GetComponent<Image>().sprite = null;

@@ -316,14 +316,14 @@ public class GameState : MonoBehaviour
     public void ChangePlayer(string a, string b)
     {
         Debug.Log("Reroll");
-        if (getActivePlayer().Money < 0)
-        {
-            Players.Remove(getActivePlayer());
-        }
-        else
-        {
+        //if (getActivePlayer().Money < 0)
+        //{
+        //    Players.Remove(getActivePlayer());
+        //}
+        //else
+        //{
             active_Player++;
-        }
+        //}
         if(Players.Count > 1)
         {
             if (active_Player >= Players.Count + 1)
@@ -331,8 +331,8 @@ public class GameState : MonoBehaviour
                 active_Player = 1;
             }
 
-            if (Players[active_Player - 1].canPlay)
-            {
+            //if (Players[active_Player - 1].canPlay)
+            //{
                 if (active_Player == gm.playerID)
                 {
                     gm.isRollingDice = true;
@@ -344,15 +344,12 @@ public class GameState : MonoBehaviour
                 }
                 cam.targetFollow = Players[active_Player - 1].transform;
                 gm.refreshGui();
-            }
-            else
-            {
-                NextTurn();
-            }
+            //}
+            //else
+            //{
+            //    NextTurn();
+            //}
         }
-        
-        
-        
     }
     public Player getActivePlayer()
     {

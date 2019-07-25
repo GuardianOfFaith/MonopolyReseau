@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public int id;
     public int doubleRolls = 0;
 
-    public bool canPlay = true;
+    //public bool canPlay = true;
     //public String Nickname;
     void Start()
     {
