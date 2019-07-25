@@ -316,29 +316,42 @@ public class GameState : MonoBehaviour
     public void ChangePlayer(string a, string b)
     {
         Debug.Log("Reroll");
-        active_Player++;
-        if (active_Player >= Players.Count + 1){
-            active_Player = 1;
-        }
-
-        if (Players[active_Player - 1].canPlay)
+        if (getActivePlayer().Money < 0)
         {
-            if (active_Player == gm.playerID)
-            {
-                gm.isRollingDice = true;
-                Roll();
-            }
-            else
-            {
-                gm.guiButton[3].SetActive(false);
-            }
-            cam.targetFollow = Players[active_Player - 1].transform;
-            gm.refreshGui(); 
+            Players.Remove(getActivePlayer());
         }
         else
         {
-            NextTurn();
+            active_Player++;
         }
+        if(Players.Count > 1)
+        {
+            if (active_Player >= Players.Count + 1)
+            {
+                active_Player = 1;
+            }
+
+            if (Players[active_Player - 1].canPlay)
+            {
+                if (active_Player == gm.playerID)
+                {
+                    gm.isRollingDice = true;
+                    Roll();
+                }
+                else
+                {
+                    gm.guiButton[3].SetActive(false);
+                }
+                cam.targetFollow = Players[active_Player - 1].transform;
+                gm.refreshGui();
+            }
+            else
+            {
+                NextTurn();
+            }
+        }
+        
+        
         
     }
     public Player getActivePlayer()

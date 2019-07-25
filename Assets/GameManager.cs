@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -218,6 +219,21 @@ public class GameManager : MonoBehaviour
         OnGui();
     }
 
+    public void endGame()
+    {
+        foreach(GameObject g in guiButton)
+        {
+            g.SetActive(false);
+        }
+        guiButton[3].GetComponentInChildren<TextMeshProUGUI>().text = "Partie Terminée\nJoueur " + gs.Players[0].name + " à gagné";
+        guiButton[3].GetComponentInChildren<Button>().onClick.AddListener(reloadMenu);
+    }
+    public void reloadMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
     void OnGui()
     {
         int i = 0;
@@ -260,8 +276,16 @@ public class GameManager : MonoBehaviour
                 {
                     guiButton[2].SetActive(true);
                     guiButton[2].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                    guiButton[2].transform.Find("Buy").gameObject.SetActive(true);
                     if (prop.Name != null  && prop.Prix != null && prop.Type != null)
                         guiButton[2].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = prop.Name + "\nPrix : " + prop.Prix + "\nGroupe : " + prop.Type.ToString();
+                }
+                else if (prop.Owner == playerID)
+                {
+                    guiButton[2].SetActive(true);
+                    guiButton[2].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                    guiButton[2].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = prop.Name + "\nAjouter une Maison : " + prop.Prix * 0.5f *prop.Tier;
+                    guiButton[2].transform.Find("Construct").gameObject.SetActive(true);
                 }
             }
             //else if (false)
@@ -283,7 +307,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void buyProp()
+    {
+        gs.BuyPropiete(gs.getActivePlayer().IDCase);
+    }
 }
 
 public class GuiContainer
