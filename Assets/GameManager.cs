@@ -280,7 +280,7 @@ public class GameManager : MonoBehaviour
                     if (prop.Name != null  && prop.Prix != null && prop.Type != null)
                         guiButton[2].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = prop.Name + "\nPrix : " + prop.Prix + "\nGroupe : " + prop.Type.ToString();
                 }
-                else if (prop.Owner == playerID && gs.Players[i].Money > prop.Prix * 0.5f * prop.Tier)
+                else if (prop.Owner == playerID && gs.getActivePlayer().Money > prop.Prix * 0.5f * prop.Tier)
                 {
                     guiButton[2].SetActive(true);
                     guiButton[2].transform.GetChild(0).GetComponent<Image>().sprite = null;
