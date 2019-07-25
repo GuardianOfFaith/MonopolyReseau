@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -324,8 +324,8 @@ public class GameState : MonoBehaviour
         //{
             active_Player++;
         //}
-        if(Players.Count > 1)
-        {
+        //if(Players.Count > 1)
+        //{
             if (active_Player >= Players.Count + 1)
             {
                 active_Player = 1;
@@ -349,7 +349,7 @@ public class GameState : MonoBehaviour
             //{
             //    NextTurn();
             //}
-        }
+        //}
     }
     public Player getActivePlayer()
     {
